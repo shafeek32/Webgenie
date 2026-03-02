@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym & Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Syncopate', sans-serif;
+        }
+        .skewed-container {
+            transform: skewY(-10deg);
+            background: linear-gradient(90deg, #141414, #2f2f2f);
+            padding: 5rem;
+        }
+        .skewed-content {
+            transform: skewY(10deg);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        .dark-neon {
+            background: linear-gradient(90deg, #2f2f2f, #141414);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+        .stats-analyzer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .stats-bar {
+            width: 100%;
+            height: 20px;
+            background: #2f2f2f;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .stats-bar-fill {
+            height: 100%;
+            background: #ff69b4;
+            border-radius: 10px;
+            animation: fill 2s ease-in-out;
+        }
+        @keyframes fill {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="dark-neon">
+    <div class="skewed-container">
+        <div class="skewed-content">
+            <h1 class="text-5xl font-bold text-white">Gym & Fitness</h1>
+            <p class="text-lg text-gray-400">Action-oriented site with classes and memberships.</p>
+            <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+                Get Started
+            </button>
+        </div>
+    </div>
+    <div class="glassmorphism container mx-auto p-4 mt-10">
+        <h2 class="text-3xl font-bold text-white">Classes</h2>
+        <div class="grid grid-cols-3 gap-4 mt-4">
+            <div class="bg-gray-800 p-4 rounded">
+                <h3 class="text-xl font-bold text-white">Yoga</h3>
+                <p class="text-lg text-gray-400">Monday, Wednesday, Friday</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded">
+                <h3 class="text-xl font-bold text-white">Pilates</h3>
+                <p class="text-lg text-gray-400">Tuesday, Thursday</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded">
+                <h3 class="text-xl font-bold text-white">Zumba</h3>
+                <p class="text-lg text-gray-400">Saturday</p>
+            </div>
+        </div>
+    </div>
+    <div class="stats-analyzer">
+        <h2 class="text-3xl font-bold text-white">Performance Stats Analyzer</h2>
+        <div class="stats-bar">
+            <div class="stats-bar-fill" style="width: 80%;"></div>
+            <span class="text-lg text-white">80%</span>
+        </div>
+        <div class="stats-bar">
+            <div class="stats-bar-fill" style="width: 60%;"></div>
+            <span class="text-lg text-white">60%</span>
+        </div>
+        <div class="stats-bar">
+            <div class="stats-bar-fill" style="width: 40%;"></div>
+            <span class="text-lg text-white">40%</span>
+        </div>
+    </div>
+    <script>
+        const statsBars = document.querySelectorAll('.stats-bar-fill');
+        statsBars.forEach((bar) => {
+            bar.style.width = `${Math.random() * 100}%`;
+        });
+    </script>
+    <div class="container mx-auto p-4 mt-10">
+        <h2 class="text-3xl font-bold text-white">Membership Plans</h2>
+        <div class="grid grid-cols-3 gap-4 mt-4">
+            <div class="bg-gray-800 p-4 rounded">
+                <h3 class="text-xl font-bold text-white">Basic</h3>
+                <p class="text-lg text-gray-400">$29.99/month</p>
+                <ul class="list-disc text-lg text-gray-400">
+                    <li>Access to gym facilities</li>
+                    <li>Group fitness classes</li>
+                </ul>
+            </div>
+            <div class="bg-gray-800 p-4 rounded">
+                <h3 class="text-xl font-bold text-white">Premium</h3>
+                <p class="text-lg text-gray-400">$49.99/month</p>
+                <ul class="list-disc text-lg text-gray-400">
+                    <li>Access to gym facilities</li>
+                    <li>Group fitness classes</li>
+                    <li>Personal training sessions</li>
+                </ul>
+            </div>
+            <div class="bg-gray-800 p-4 rounded">
+                <h3 class="text-xl font-bold text-white">Elite</h3>
+                <p class="text-lg text-gray-400">$99.99/month</p>
+                <ul class="list-disc text-lg text-gray-400">
+                    <li>Access to gym facilities</li>
+                    <li>Group fitness classes</li>
+                    <li>Personal training sessions</li>
+                    <li>Nutrition counseling</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto p-4 mt-10">
+        <h2 class="text-3xl font-bold text-white">Get Started</h2>
+        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+            Sign Up
+        </button>
+    </div>
+</body>
+</html>

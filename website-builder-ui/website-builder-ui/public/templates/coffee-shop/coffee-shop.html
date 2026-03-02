@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate&family=Outfit:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        .glassmorph {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+        }
+        .dark-neon {
+            background: linear-gradient(45deg, #2c2c2c, #1a1a1a);
+            color: #fff;
+        }
+        .skewed {
+            transform: skewY(-10deg);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    </style>
+</head>
+<body class="dark-neon h-screen">
+    <header class="skewed bg-[#ff9900] text-white p-4">
+        <nav class="container mx-auto flex justify-between">
+            <a href="#" class="text-3xl font-bold">Coffee Shop</a>
+            <ul class="flex items-center space-x-4">
+                <li><a href="#" class="text-lg">Home</a></li>
+                <li><a href="#" class="text-lg">Menu</a></li>
+                <li><a href="#" class="text-lg">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container mx-auto p-4">
+        <section class="glassmorph p-4 mt-10">
+            <h1 class="text-5xl font-bold mb-4">Welcome to our Coffee Shop</h1>
+            <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            <button class="bg-[#ff9900] text-white py-2 px-4 rounded">Order Now</button>
+        </section>
+        <section class="bento-grid mt-10">
+            <div class="bg-[#ff9900] text-white p-4 rounded">
+                <h2 class="text-3xl font-bold mb-4">Coffee of the Month</h2>
+                <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+                <button class="bg-white text-[#ff9900] py-2 px-4 rounded">Learn More</button>
+            </div>
+            <div class="bg-[#ff9900] text-white p-4 rounded">
+                <h2 class="text-3xl font-bold mb-4">Specialty Drinks</h2>
+                <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+                <button class="bg-white text-[#ff9900] py-2 px-4 rounded">Explore</button>
+            </div>
+            <div class="bg-[#ff9900] text-white p-4 rounded">
+                <h2 class="text-3xl font-bold mb-4">Food Menu</h2>
+                <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+                <button class="bg-white text-[#ff9900] py-2 px-4 rounded">View Menu</button>
+            </div>
+        </section>
+        <section class="mt-10">
+            <h1 class="text-5xl font-bold mb-4">Roast Level Simulator</h1>
+            <div class="bg-[#ff9900] text-white p-4 rounded">
+                <label for="roast-level">Select Roast Level:</label>
+                <input type="range" id="roast-level" min="0" max="100" value="50">
+                <button class="bg-white text-[#ff9900] py-2 px-4 rounded" onclick="simulateRoastLevel()">Simulate</button>
+                <p id="result"></p>
+            </div>
+        </section>
+    </main>
+    <script>
+        function simulateRoastLevel() {
+            const roastLevel = document.getElementById('roast-level').value;
+            const result = document.getElementById('result');
+            if (roastLevel < 30) {
+                result.textContent = 'Light Roast';
+            } else if (roastLevel < 60) {
+                result.textContent = 'Medium Roast';
+            } else {
+                result.textContent = 'Dark Roast';
+            }
+        }
+    </script>
+    <img src="https://source.unsplash.com/1600x900/?coffee,shop" alt="Coffee Shop" class="absolute top-0 left-0 w-full h-full object-cover">
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .glassmorph {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .dark-neon {
+            background: #1a1d23;
+            color: #fff;
+        }
+        .skewed {
+            transform: skewY(-10deg);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    </style>
+</head>
+<body class="dark-neon">
+    <header class="text-white glassmorph p-10 mb-10">
+        <h1 class="text-5xl font-bold mb-5">Grocery Store</h1>
+        <nav class="flex justify-between">
+            <a href="#" class="text-2xl font-bold mr-10">Home</a>
+            <a href="#" class="text-2xl font-bold mr-10">Shop</a>
+            <a href="#" class="text-2xl font-bold">Contact</a>
+        </nav>
+    </header>
+    <main class="container mx-auto p-10">
+        <section class="skewed bg-orange-500 p-10 mb-10">
+            <h2 class="text-3xl font-bold mb-5">Fresh Produce</h2>
+            <p class="text-lg mb-10">Get the freshest fruits and vegetables delivered to your doorstep.</p>
+            <button class="bg-green-500 text-white p-5 rounded-lg">Shop Now</button>
+        </section>
+        <section class="bento-grid mb-10">
+            <div class="glassmorph p-10">
+                <h3 class="text-2xl font-bold mb-5">Dairy Products</h3>
+                <p class="text-lg mb-10">Milk, cheese, yogurt, and more.</p>
+                <button class="bg-blue-500 text-white p-5 rounded-lg">View Products</button>
+            </div>
+            <div class="glassmorph p-10">
+                <h3 class="text-2xl font-bold mb-5">Meat and Poultry</h3>
+                <p class="text-lg mb-10">Fresh meat, poultry, and seafood.</p>
+                <button class="bg-red-500 text-white p-5 rounded-lg">View Products</button>
+            </div>
+            <div class="glassmorph p-10">
+                <h3 class="text-2xl font-bold mb-5">Bakery</h3>
+                <p class="text-lg mb-10">Freshly baked bread, cakes, and pastries.</p>
+                <button class="bg-yellow-500 text-white p-5 rounded-lg">View Products</button>
+            </div>
+        </section>
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold mb-5">Nutrition Calculator</h2>
+            <div class="glassmorph p-10">
+                <label for="calories" class="text-lg mb-5">Enter your daily calorie intake:</label>
+                <input type="number" id="calories" class="p-5 rounded-lg mb-10">
+                <button class="bg-purple-500 text-white p-5 rounded-lg" onclick="calculateNutrition()">Calculate</button>
+                <div id="result" class="text-lg mb-10"></div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function calculateNutrition() {
+            const calories = document.getElementById("calories").value;
+            const result = document.getElementById("result");
+            const protein = calories * 0.2;
+            const carbohydrates = calories * 0.5;
+            const fat = calories * 0.3;
+            result.innerHTML = `Protein: ${protein}g, Carbohydrates: ${carbohydrates}g, Fat: ${fat}g`;
+        }
+    </script>
+    <footer class="text-white glassmorph p-10 mt-10">
+        <p class="text-lg mb-5">&copy; 2024 Grocery Store</p>
+        <nav class="flex justify-between">
+            <a href="#" class="text-lg mr-10">Home</a>
+            <a href="#" class="text-lg mr-10">Shop</a>
+            <a href="#" class="text-lg">Contact</a>
+        </nav>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,346 @@
+/* Law Firm - Prestigious Authoritative Design */
+:root {
+    --navy: #101827;
+    --gold: #A88B4A;
+    --gold-hover: #C5A566;
+    --silver: #E5E7EB;
+    --white: #FFFFFF;
+    --text-dark: #1F2937;
+    --text-muted: #6B7280;
+    --border: rgba(168, 139, 74, 0.2);
+    --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.footer-logo {
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 700;
+}
+
+h2,
+blockquote,
+.motto {
+    font-family: 'Libre Baskerville', serif;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+.section-padding {
+    padding: 10rem 0;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 2rem 0;
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    background: rgba(16, 24, 39, 0.98);
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--white);
+    font-weight: 400;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.btn-outline {
+    border: 1px solid var(--gold);
+    padding: 0.8rem 1.8rem;
+    border-radius: 2px;
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    color: var(--white);
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy) 0%, rgba(16, 24, 39, 0.4) 100%),
+        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.motto {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 4rem;
+}
+
+.cta-btns {
+    display: flex;
+    gap: 2rem;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 1.2rem 3rem;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--gold-hover);
+    transform: translateY(-5px);
+}
+
+/* Expertise */
+.expertise {
+    background: var(--white);
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin-top: 6rem;
+}
+
+.expertise-card {
+    padding: 4rem;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    position: relative;
+    transition: var(--transition);
+}
+
+.card-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: var(--gold);
+    transition: var(--transition);
+}
+
+.expertise-card:hover {
+    background: var(--white);
+    box-shadow: 0 30px 60px rgba(16, 24, 39, 0.05);
+}
+
+.expertise-card:hover .card-border {
+    width: 100%;
+}
+
+/* Stats */
+.stats-banner {
+    padding: 8rem 0;
+    background: var(--navy);
+    color: var(--white);
+}
+
+.stats-flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+}
+
+.stat-box span {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--gold);
+    font-family: 'Cinzel Decorative';
+}
+
+/* Attorney Highlight */
+.attorney-highlight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+}
+
+.portrait {
+    width: 100%;
+    filter: grayscale(100%);
+    transition: var(--transition);
+}
+
+.attorney-highlight:hover .portrait {
+    filter: grayscale(0%);
+}
+
+blockquote {
+    font-size: 2rem;
+    font-style: italic;
+    margin-top: 3rem;
+    color: var(--gold);
+    border-left: 5px solid var(--gold);
+    padding-left: 2rem;
+}
+
+/* CTA */
+.cta-inner {
+    background: var(--navy);
+    padding: 8rem;
+    text-align: center;
+    color: var(--white);
+    border: 1px solid var(--gold);
+}
+
+.btn-large {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 1.5rem 4rem;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 3rem;
+}
+
+/* Footer */
+.footer {
+    padding: 8rem 0 4rem;
+    background: #0B111B;
+    color: var(--silver);
+    border-top: 1px solid rgba(168, 139, 74, 0.3);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 5rem;
+}
+
+.footer-col h4 {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+.footer-col a {
+    color: var(--silver);
+    display: block;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+/* Scroll Animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: var(--transition);
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 2rem;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-image {
+        width: 100%;
+        opacity: 0.3;
+    }
+
+    .expertise-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .attorney-highlight {
+        grid-template-columns: 1fr;
+    }
+}

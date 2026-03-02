@@ -1,0 +1,282 @@
+[
+    {
+        "id": "saas-landing",
+        "name": "SaaS Landing Page",
+        "description": "Modern software-as-a-service landing page with hero, features, and pricing."
+    },
+    {
+        "id": "tech-portfolio",
+        "name": "Tech Portfolio",
+        "description": "Personal website for developers and engineers showing projects and skills."
+    },
+    {
+        "id": "creative-portfolio",
+        "name": "Creative Portfolio",
+        "description": "Visual-heavy portfolio for designers, artists, and illustrators."
+    },
+    {
+        "id": "photography",
+        "name": "Photography Portfolio",
+        "description": "Gallery-focused site for professional photographers."
+    },
+    {
+        "id": "law-firm",
+        "name": "Law Firm",
+        "description": "Professional and trustworthy site for legal services."
+    },
+    {
+        "id": "medical-clinic",
+        "name": "Medical Clinic",
+        "description": "Clean and informative site for clinics and doctors."
+    },
+    {
+        "id": "dental-practice",
+        "name": "Dental Practice",
+        "description": "Specialized clinic site for dentists and orthodontists."
+    },
+    {
+        "id": "real-estate",
+        "name": "Real Estate Agency",
+        "description": "Property listing and agent showcase site."
+    },
+    {
+        "id": "restaurant-fine",
+        "name": "Fine Dining Restaurant",
+        "description": "Elegant site with menu, reservations, and gallery."
+    },
+    {
+        "id": "bakery",
+        "name": "Rustic Bakery",
+        "description": "Warm, inviting site for bakeries and cafes."
+    },
+    {
+        "id": "coffee-shop",
+        "name": "Coffee Shop",
+        "description": "Vibrant site for cafes and roasteries."
+    },
+    {
+        "id": "gym-fitness",
+        "name": "Gym & Fitness",
+        "description": "Action-oriented site with classes and memberships."
+    },
+    {
+        "id": "yoga-studio",
+        "name": "Yoga Studio",
+        "description": "Calm, serene site for yoga and wellness centers."
+    },
+    {
+        "id": "ecommerce-fashion",
+        "name": "Fashion E-commerce",
+        "description": "Stylish online store for clothing and accessories."
+    },
+    {
+        "id": "ecommerce-electronics",
+        "name": "Electronics E-commerce",
+        "description": "Clean store for gadgets and hardware."
+    },
+    {
+        "id": "ecommerce-groceries",
+        "name": "Grocery Store",
+        "description": "Functional store for food and household items."
+    },
+    {
+        "id": "startup-landing",
+        "name": "Startup Landing Page",
+        "description": "Bold and innovative site for new ventures."
+    },
+    {
+        "id": "mobile-app",
+        "name": "Mobile App Showcase",
+        "description": "Page dedicated to promoting a mobile application."
+    },
+    {
+        "id": "webapp-dashboard",
+        "name": "Web App Dashboard",
+        "description": "Functional interface for applications and data."
+    },
+    {
+        "id": "online-course",
+        "name": "Online Course / LMS",
+        "description": "Education platform for selling and viewing courses."
+    },
+    {
+        "id": "education-tutor",
+        "name": "Individual Tutor",
+        "description": "Personal site for teachers and tutors."
+    },
+    {
+        "id": "nonprofit",
+        "name": "Nonprofit / Charity",
+        "description": "Cause-driven site with donation features."
+    },
+    {
+        "id": "event-conference",
+        "name": "Event & Conference",
+        "description": "Informational site with schedules and tickets."
+    },
+    {
+        "id": "wedding",
+        "name": "Wedding Site",
+        "description": "Personal site for wedding invitations and details."
+    },
+    {
+        "id": "interior-design",
+        "name": "Interior Design",
+        "description": "Portfolio and service site for designers."
+    },
+    {
+        "id": "architecture",
+        "name": "Architecture Firm",
+        "description": "Structural and project-focused site for firms."
+    },
+    {
+        "id": "barber-shop",
+        "name": "Barber Shop / Salon",
+        "description": "Service menu and booking site for grooming."
+    },
+    {
+        "id": "spa-wellness",
+        "name": "Spa & Wellness",
+        "description": "Relaxing site for spas and massage therapy."
+    },
+    {
+        "id": "travel-agency",
+        "name": "Travel Agency",
+        "description": "Service site for travel planning and bookings."
+    },
+    {
+        "id": "hotel-booking",
+        "name": "Hotel & Resort",
+        "description": "Luxury site with rooms and availability check."
+    },
+    {
+        "id": "construction",
+        "name": "Construction Company",
+        "description": "Project and service site for heavy industry."
+    },
+    {
+        "id": "cleaning-service",
+        "name": "Cleaning Service",
+        "description": "Service list and quote request for cleaning."
+    },
+    {
+        "id": "auto-repair",
+        "name": "Auto Repair Shop",
+        "description": "Functional site for mechanics and car services."
+    },
+    {
+        "id": "pet-grooming",
+        "name": "Pet Grooming",
+        "description": "Service site for pet care and bookings."
+    },
+    {
+        "id": "vet-clinic",
+        "name": "Vet Clinic",
+        "description": "Medical site for pet health and appointments."
+    },
+    {
+        "id": "financial-consulting",
+        "name": "Financial Consulting",
+        "description": "Expertise-driven site for advisors."
+    },
+    {
+        "id": "marketing-agency",
+        "name": "Marketing Agency",
+        "description": "Strategy and case-study focused site."
+    },
+    {
+        "id": "blog-travel",
+        "name": "Travel Blog",
+        "description": "Adventure-focused layout for travel writing."
+    },
+    {
+        "id": "blog-food",
+        "name": "Food Blog",
+        "description": "Recipe and imagery-focused layout."
+    },
+    {
+        "id": "blog-tech",
+        "name": "Tech Blog",
+        "description": "Knowledge-sharing layout for technical topics."
+    },
+    {
+        "id": "news-magazine",
+        "name": "News & Magazine",
+        "description": "Content-heavy layout for publishing."
+    },
+    {
+        "id": "crypto-wallet",
+        "name": "Cryptocurrency Site",
+        "description": "Modern site for web3 and crypto products."
+    },
+    {
+        "id": "gaming-community",
+        "name": "Gaming Community",
+        "description": "High-energy site for gamers and teams."
+    },
+    {
+        "id": "music-artist",
+        "name": "Music Artist / Band",
+        "description": "Media-rich site for musicians and performers."
+    },
+    {
+        "id": "podcast",
+        "name": "Podcast Landing",
+        "description": "Audio-focused site for podcast episodes."
+    },
+    {
+        "id": "admin-dashboard",
+        "name": "Admin Dashboard",
+        "description": "Backend management interface simulation."
+    },
+    {
+        "id": "job-board",
+        "name": "Job Board",
+        "description": "Listings and applications platform."
+    },
+    {
+        "id": "community-forum",
+        "name": "Community Forum",
+        "description": "Discussion-based community platform."
+    },
+    {
+        "id": "environmental",
+        "name": "Environmental / Green",
+        "description": "Sustainability-focused site for green causes."
+    },
+    {
+        "id": "logistic-service",
+        "name": "Logistics & Shipping",
+        "description": "Service and tracking-focused site."
+    },
+    {
+        "id": "insurance-agency",
+        "name": "Insurance Agency",
+        "description": "Policy and claim-focused site."
+    },
+    {
+        "id": "hr-recruitment",
+        "name": "HR & Recruitment",
+        "description": "People-focused site for hiring."
+    },
+    {
+        "id": "coworking-space",
+        "name": "Coworking Space",
+        "description": "Modern site for office rentals."
+    },
+    {
+        "id": "plumbing-service",
+        "name": "Plumbing Service",
+        "description": "Emergency and scheduled service site."
+    },
+    {
+        "id": "electrician",
+        "name": "Electrician Service",
+        "description": "Technical service site for electrical work."
+    },
+    {
+        "id": "sports",
+        "name": "Sports & Athletics",
+        "description": "High-energy site for sports teams, clubs, or individual athletes."
+    }
+]

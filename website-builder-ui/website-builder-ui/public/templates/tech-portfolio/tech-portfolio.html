@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .glassmorph {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .neon {
+            color: #8e44ad;
+        }
+        .deep-space {
+            background: linear-gradient(180deg, #2f4f7f 0%, #2f4f7f 100%);
+        }
+        .skewed {
+            transform: skew(10deg);
+        }
+        .bentobox {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+    </style>
+</head>
+<body class="deep-space">
+    <header class="glassmorph p-4 text-white mb-4">
+        <h1 class="text-3xl font-bold mb-2">Tech Portfolio</h1>
+        <p class="text-lg">Personal website for developers and engineers showing projects and skills.</p>
+    </header>
+    <main class="container mx-auto p-4">
+        <section class="bentobox mb-4">
+            <div class="bg-white p-4 rounded">
+                <h2 class="text-2xl font-bold mb-2">Skills</h2>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>Node.js</li>
+                </ul>
+            </div>
+            <div class="bg-white p-4 rounded">
+                <h2 class="text-2xl font-bold mb-2">Projects</h2>
+                <ul>
+                    <li>Project 1</li>
+                    <li>Project 2</li>
+                    <li>Project 3</li>
+                </ul>
+            </div>
+            <div class="bg-white p-4 rounded">
+                <h2 class="text-2xl font-bold mb-2">Experience</h2>
+                <ul>
+                    <li>Experience 1</li>
+                    <li>Experience 2</li>
+                    <li>Experience 3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="mb-4">
+            <h2 class="text-2xl font-bold mb-2">Skill Level Simulator</h2>
+            <div class="glassmorph p-4 mb-2">
+                <canvas id="skill-level" width="400" height="400"></canvas>
+            </div>
+            <button class="bg-neon hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onclick="simulateSkillLevel()">Simulate</button>
+        </section>
+        <section class="mb-4">
+            <h2 class="text-2xl font-bold mb-2">Project Detail Expander</h2>
+            <div class="glassmorph p-4 mb-2">
+                <button class="bg-neon hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onclick="expandProjectDetail()">Expand</button>
+                <div id="project-detail" class="hidden p-4">
+                    <h3 class="text-xl font-bold mb-2">Project Detail</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function simulateSkillLevel() {
+            const canvas = document.getElementById('skill-level');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(200, 200, 100, 0, 2 * Math.PI);
+            ctx.fillStyle = 'rgba(142, 68, 173, 0.5)';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(200, 200, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = 'rgba(142, 68, 173, 1)';
+            ctx.fill();
+        }
+        function expandProjectDetail() {
+            const projectDetail = document.getElementById('project-detail');
+            projectDetail.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine Dining Restaurant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Syncopate&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Syncopate', sans-serif;
+            background-image: linear-gradient(to bottom, #2c2c2c, #1a1a1a);
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .glassmorph {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .skewed {
+            transform: skew(10deg);
+            margin-left: -50px;
+            width: calc(100% + 50px);
+        }
+    </style>
+</head>
+<body>
+    <header class="text-white pt-10 pb-20">
+        <nav class="flex justify-center">
+            <a href="#" class="text-3xl font-bold mr-10">Home</a>
+            <a href="#" class="text-3xl font-bold mr-10">Menu</a>
+            <a href="#" class="text-3xl font-bold mr-10">Reservations</a>
+            <a href="#" class="text-3xl font-bold">Gallery</a>
+        </nav>
+        <h1 class="text-6xl font-bold text-center mt-10">Fine Dining Restaurant</h1>
+        <p class="text-2xl text-center mt-5">Experience the epitome of luxury dining</p>
+    </header>
+    <section class="glassmorph p-10 mt-10 mx-auto w-3/4 rounded-2xl">
+        <h2 class="text-4xl font-bold mb-5">Menu</h2>
+        <div class="bento-grid grid grid-cols-3 gap-5">
+            <div class="bg-white p-5 rounded-2xl shadow-md">
+                <h3 class="text-2xl font-bold mb-2">Appetizers</h3>
+                <ul>
+                    <li class="mb-2">Seared Scallops ($18)</li>
+                    <li class="mb-2">Heirloom Tomato Salad ($15)</li>
+                    <li class="mb-2">Grilled Octopus ($22)</li>
+                </ul>
+            </div>
+            <div class="bg-white p-5 rounded-2xl shadow-md">
+                <h3 class="text-2xl font-bold mb-2">Entrees</h3>
+                <ul>
+                    <li class="mb-2">Grilled Filet Mignon ($45)</li>
+                    <li class="mb-2">Pan-Seared Salmon ($35)</li>
+                    <li class="mb-2">Roasted Chicken ($28)</li>
+                </ul>
+            </div>
+            <div class="bg-white p-5 rounded-2xl shadow-md">
+                <h3 class="text-2xl font-bold mb-2">Desserts</h3>
+                <ul>
+                    <li class="mb-2">Cheesecake ($10)</li>
+                    <li class="mb-2">Chocolate Lava Cake ($12)</li>
+                    <li class="mb-2">Fresh Fruit Tart ($15)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="mt-20">
+        <h2 class="text-4xl font-bold text-center mb-10">Reservations</h2>
+        <div class="glassmorph p-10 mx-auto w-1/2 rounded-2xl">
+            <form>
+                <label for="name" class="block text-2xl font-bold mb-2">Name:</label>
+                <input type="text" id="name" class="block w-full p-2 mb-5 border border-gray-400 rounded-2xl">
+                <label for="date" class="block text-2xl font-bold mb-2">Date:</label>
+                <input type="date" id="date" class="block w-full p-2 mb-5 border border-gray-400 rounded-2xl">
+                <label for="time" class="block text-2xl font-bold mb-2">Time:</label>
+                <input type="time" id="time" class="block w-full p-2 mb-5 border border-gray-400 rounded-2xl">
+                <label for="party-size" class="block text-2xl font-bold mb-2">Party Size:</label>
+                <select id="party-size" class="block w-full p-2 mb-5 border border-gray-400 rounded-2xl">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button class="bg-gold text-white p-2 rounded-2xl w-full">Make Reservation</button>
+            </form>
+        </div>
+    </section>
+    <section class="mt-20">
+        <h2 class="text-4xl font-bold text-center mb-10">Gallery</h2>
+        <div class="grid grid-cols-3 gap-5">
+            <img src="https://source.unsplash.com/300x200/?fine-dining" alt="Fine Dining" class="rounded-2xl shadow-md">
+            <img src="https://source.unsplash.com/300x200/?luxury-restaurant" alt="Luxury Restaurant" class="rounded-2xl shadow-md">
+            <img src="https://source.unsplash.com/300x200/?gourmet-food" alt="Gourmet Food" class="rounded-2xl shadow-md">
+            <img src="https://source.unsplash.com/300x200/?wine-pairing" alt="Wine Pairing" class="rounded-2xl shadow-md">
+            <img src="https://source.unsplash.com/300x200/?dining-room" alt="Dining Room" class="rounded-2xl shadow-md">
+            <img src="https://source.unsplash.com/300x200/?chef" alt="Chef" class="rounded-2xl shadow-md">
+        </div>
+    </section>
+    <section class="mt-20">
+        <h2 class="text-4xl font-bold text-center mb-10">Interactive Menu Simulator</h2>
+        <div class="glassmorph p-10 mx-auto w-1/2 rounded-2xl">
+            <label for="dish" class="block text-2xl font-bold mb-2">Select a Dish:</label>
+            <select id="dish" class="block w-full p-2 mb-5 border border-gray-400 rounded-2xl">
+                <option value="appetizer">Appetizer</option>
+                <option value="entree">Entree</option>
+                <option value="dessert">Dessert</option>
+            </select>
+            <label for="price" class="block text-2xl font-bold mb-2">Price:</label>
+            <input type="number" id="price" class="block w-full p-2 mb-5 border border-gray-400 rounded-2xl">
+            <button class="bg-gold text-white p-2 rounded-2xl w-full" onclick="calculateTotal()">Calculate Total</button>
+            <p id="total" class="text-2xl font-bold mt-5"></p>
+        </div>
+    </section>
+    <script>
+        function calculateTotal() {
+            var dish = document.getElementById("dish").value;
+            var price = document.getElementById("price").value;
+            var total = 0;
+            if (dish == "appetizer") {
+                total = price * 1.1;
+            } else if (dish == "entree") {
+                total = price * 1.2;
+            } else if (dish == "dessert") {
+                total = price * 1.1;
+            }
+            document.getElementById("total").innerHTML = "Total: $" + total.toFixed(2);
+        }
+    </script>
+    <footer class="text-white mt-20 pt-10 pb-10">
+        <p class="text-2xl text-center">&copy; 2024 Fine Dining Restaurant</p>
+    </footer>
+</body>
+</html>

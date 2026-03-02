@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF69B4;
+            --secondary-color: #333;
+            --background-color: #2c2c2c;
+            --glassmorphism-blur: 20px;
+        }
+        
+        .glassmorphism {
+            backdrop-filter: blur(var(--glassmorphism-blur));
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .skewed {
+            transform: skew(-10deg);
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .dark-neon {
+            background-color: var(--background-color);
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="dark-neon">
+    <header class="text-center p-10">
+        <h1 class="text-5xl font-bold font-syncopate text-primary-color">Photography Portfolio</h1>
+    </header>
+    <main class="container mx-auto p-10">
+        <section class="bento-grid">
+            <div class="glassmorphism">
+                <img src="https://source.unsplash.com/300x200/?photography" alt="Photography" class="w-full h-full object-cover">
+                <h2 class="text-2xl font-bold font-outfit mt-5">Project 1</h2>
+                <p class="text-lg font-playfair">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            </div>
+            <div class="glassmorphism">
+                <img src="https://source.unsplash.com/300x200/?landscape-photography" alt="Landscape Photography" class="w-full h-full object-cover">
+                <h2 class="text-2xl font-bold font-outfit mt-5">Project 2</h2>
+                <p class="text-lg font-playfair">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            </div>
+            <div class="glassmorphism">
+                <img src="https://source.unsplash.com/300x200/?portrait-photography" alt="Portrait Photography" class="w-full h-full object-cover">
+                <h2 class="text-2xl font-bold font-outfit mt-5">Project 3</h2>
+                <p class="text-lg font-playfair">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            </div>
+            <div class="glassmorphism">
+                <img src="https://source.unsplash.com/300x200/?street-photography" alt="Street Photography" class="w-full h-full object-cover">
+                <h2 class="text-2xl font-bold font-outfit mt-5">Project 4</h2>
+                <p class="text-lg font-playfair">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            </div>
+            <div class="glassmorphism">
+                <img src="https://source.unsplash.com/300x200/?wildlife-photography" alt="Wildlife Photography" class="w-full h-full object-cover">
+                <h2 class="text-2xl font-bold font-outfit mt-5">Project 5</h2>
+                <p class="text-lg font-playfair">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            </div>
+            <div class="glassmorphism">
+                <img src="https://source.unsplash.com/300x200/?cityscape-photography" alt="Cityscape Photography" class="w-full h-full object-cover">
+                <h2 class="text-2xl font-bold font-outfit mt-5">Project 6</h2>
+                <p class="text-lg font-playfair">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            </div>
+        </section>
+        <section class="mt-10">
+            <h2 class="text-3xl font-bold font-outfit mb-5">Skill Level</h2>
+            <div class="skewed bg-primary-color p-10 text-center">
+                <canvas id="skill-level" width="400" height="400"></canvas>
+            </div>
+        </section>
+    </main>
+    <script>
+        const canvas = document.getElementById('skill-level');
+        const ctx = canvas.getContext('2d');
+        
+        ctx.beginPath();
+        ctx.arc(200, 200, 150, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.arc(200, 200, 120, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.arc(200, 200, 90, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+        
+        ctx.font = '24px Syncopate';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = 'white';
+        ctx.fillText('Beginner', 200, 170);
+        ctx.fillText('Intermediate', 200, 200);
+        ctx.fillText('Advanced', 200, 230);
+    </script>
+</body>
+</html>

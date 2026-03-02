@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .dark-neon {
+            background: #1a1d23;
+        }
+        .skewed {
+            transform: skewY(-10deg);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .radar-chart {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #2f343a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .radar-chart .axis {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .radar-chart .axis .line {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: #fff;
+            transform-origin: center;
+        }
+        .radar-chart .axis .line:nth-child(1) {
+            transform: rotate(0deg);
+        }
+        .radar-chart .axis .line:nth-child(2) {
+            transform: rotate(45deg);
+        }
+        .radar-chart .axis .line:nth-child(3) {
+            transform: rotate(90deg);
+        }
+        .radar-chart .axis .line:nth-child(4) {
+            transform: rotate(135deg);
+        }
+        .radar-chart .axis .line:nth-child(5) {
+            transform: rotate(180deg);
+        }
+        .radar-chart .axis .line:nth-child(6) {
+            transform: rotate(225deg);
+        }
+        .radar-chart .axis .line:nth-child(7) {
+            transform: rotate(270deg);
+        }
+        .radar-chart .axis .line:nth-child(8) {
+            transform: rotate(315deg);
+        }
+        .radar-chart .value {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="dark-neon">
+    <header class="glassmorphism py-4 px-8">
+        <nav class="flex justify-between">
+            <h1 class="text-3xl font-bold text-white">Creative Portfolio</h1>
+            <ul class="flex items-center space-x-4">
+                <li><a href="#" class="text-lg text-gray-300 hover:text-white">Home</a></li>
+                <li><a href="#" class="text-lg text-gray-300 hover:text-white">About</a></li>
+                <li><a href="#" class="text-lg text-gray-300 hover:text-white">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="py-8 px-8">
+        <section class="skewed bg-gray-800 py-8 px-8">
+            <h2 class="text-5xl font-bold text-white">Featured Projects</h2>
+            <div class="bento-grid">
+                <div class="bg-gray-700 py-4 px-4">
+                    <img src="https://source.unsplash.com/200x200/?art" alt="Project 1" class="w-full h-full object-cover">
+                    <h3 class="text-2xl font-bold text-white mt-4">Project 1</h3>
+                    <p class="text-lg text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="bg-gray-700 py-4 px-4">
+                    <img src="https://source.unsplash.com/200x200/?design" alt="Project 2" class="w-full h-full object-cover">
+                    <h3 class="text-2xl font-bold text-white mt-4">Project 2</h3>
+                    <p class="text-lg text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="bg-gray-700 py-4 px-4">
+                    <img src="https://source.unsplash.com/200x200/?illustration" alt="Project 3" class="w-full h-full object-cover">
+                    <h3 class="text-2xl font-bold text-white mt-4">Project 3</h3>
+                    <p class="text-lg text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </section>
+        <section class="py-8 px-8">
+            <h2 class="text-5xl font-bold text-white">Skills</h2>
+            <div class="radar-chart">
+                <div class="axis">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="value" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                <div class="value" style="top: 30%; left: 70%; transform: translate(-50%, -50%);"></div>
+                <div class="value" style="top: 70%; left: 30%; transform: translate(-50%, -50%);"></div>
+            </div>
+            <script>
+                const radarChart = document.querySelector('.radar-chart');
+                const values = document.querySelectorAll('.value');
+                const lines = document.querySelectorAll('.line');
+                let angle = 0;
+                setInterval(() => {
+                    angle += 10;
+                    lines.forEach((line, index) => {
+                        line.style.transform = `rotate(${angle + index * 45}deg)`;
+                    });
+                    values.forEach((value, index) => {
+                        value.style.transform = `translate(-50%, -50%) rotate(${angle + index * 45}deg)`;
+                    });
+                }, 100);
+            </script>
+        </section>
+    </main>
+    <footer class="glassmorphism py-4 px-8">
+        <p class="text-lg text-gray-300">&copy; 2023 Creative Portfolio</p>
+    </footer>
+</body>
+</html>

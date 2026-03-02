@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .glassmorph {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .dark-neon {
+            background: linear-gradient(180deg, #2b2b2b 0%, #1a1a1a 100%);
+        }
+        .skewed {
+            transform: skew(10deg);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    </style>
+</head>
+<body class="dark-neon h-screen">
+    <header class="text-white p-4 glassmorph w-80 mx-auto mt-10">
+        <h1 class="text-3xl font-bold mb-4">Medical Clinic</h1>
+        <nav>
+            <ul class="flex justify-between">
+                <li class="mr-6"><a href="#" class="text-lg">Home</a></li>
+                <li class="mr-6"><a href="#" class="text-lg">About</a></li>
+                <li class="mr-6"><a href="#" class="text-lg">Services</a></li>
+                <li><a href="#" class="text-lg">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="mt-20">
+        <section class="bento-grid mx-auto w-80">
+            <div class="bg-gray-800 p-4 glassmorph">
+                <h2 class="text-2xl font-bold mb-4">Our Team</h2>
+                <p class="text-lg">Meet our team of experienced doctors and medical professionals.</p>
+            </div>
+            <div class="bg-gray-800 p-4 glassmorph">
+                <h2 class="text-2xl font-bold mb-4">Our Services</h2>
+                <p class="text-lg">We offer a wide range of medical services, from check-ups to surgeries.</p>
+            </div>
+            <div class="bg-gray-800 p-4 glassmorph">
+                <h2 class="text-2xl font-bold mb-4">Testimonials</h2>
+                <p class="text-lg">Don't just take our word for it - hear from our satisfied patients.</p>
+            </div>
+        </section>
+        <section class="mt-20">
+            <div class="bg-gray-800 p-4 glassmorph w-80 mx-auto">
+                <h2 class="text-2xl font-bold mb-4">Symptom Checker</h2>
+                <div id="symptom-checker" class="mb-4">
+                    <label for="symptoms" class="block text-lg mb-2">Select your symptoms:</label>
+                    <select id="symptoms" class="block w-full p-2 mb-2">
+                        <option value="">Select a symptom</option>
+                        <option value="headache">Headache</option>
+                        <option value="fever">Fever</option>
+                        <option value="cough">Cough</option>
+                    </select>
+                    <button id="check-symptoms" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Check Symptoms</button>
+                    <p id="symptom-result" class="text-lg mt-4"></p>
+                </div>
+                <script>
+                    const symptomChecker = document.getElementById('symptom-checker');
+                    const symptomsSelect = document.getElementById('symptoms');
+                    const checkSymptomsButton = document.getElementById('check-symptoms');
+                    const symptomResult = document.getElementById('symptom-result');
+
+                    checkSymptomsButton.addEventListener('click', () => {
+                        const selectedSymptom = symptomsSelect.value;
+                        if (selectedSymptom === 'headache') {
+                            symptomResult.textContent = 'You may have a migraine or tension headache.';
+                        } else if (selectedSymptom === 'fever') {
+                            symptomResult.textContent = 'You may have a viral or bacterial infection.';
+                        } else if (selectedSymptom === 'cough') {
+                            symptomResult.textContent = 'You may have a respiratory infection or allergies.';
+                        } else {
+                            symptomResult.textContent = 'Please select a symptom.';
+                        }
+                    });
+                </script>
+            </div>
+        </section>
+    </main>
+    <footer class="text-white p-4 glassmorph w-80 mx-auto mt-20">
+        <p>&copy; 2023 Medical Clinic</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Website Builder | Pro Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="builder.css">
+</head>
+
+<body>
+    <div class="builder-app">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Components</h2>
+                <p>Drag elements to canvas</p>
+            </div>
+
+            <div class="component-list">
+                <div class="component-item" draggable="true" data-type="hero">
+                    <span class="icon">🖼️</span>
+                    <span class="label">Hero Section</span>
+                </div>
+                <div class="component-item" draggable="true" data-type="text">
+                    <span class="icon">📝</span>
+                    <span class="label">Text Section</span>
+                </div>
+                <div class="component-item" draggable="true" data-type="image">
+                    <span class="icon">📷</span>
+                    <span class="label">Image Block</span>
+                </div>
+                <div class="component-item" draggable="true" data-type="gallery">
+                    <span class="icon">🎨</span>
+                    <span class="label">Gallery Section</span>
+                </div>
+                <div class="component-item" draggable="true" data-type="cta">
+                    <span class="icon">🔘</span>
+                    <span class="label">CTA Banner</span>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button id="clear-btn" class="btn-secondary" style="margin-bottom: 0.5rem;">Clear Canvas</button>
+                <button id="save-btn" class="btn-primary">Export Project</button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <header class="workspace-header">
+                <div class="view-toggles">
+                    <button class="active" data-view="desktop">🖥️</button>
+                    <button data-view="mobile">📱</button>
+                </div>
+                <div class="status-indicator">
+                    <span class="pulse"></span> Ready to build
+                </div>
+            </header>
+
+            <div id="canvas" class="canvas desktop-view">
+                <!-- Drop Zone placeholder for empty state -->
+                <div class="empty-state">
+                    <div class="empty-content">
+                        <span class="large-icon">✨</span>
+                        <h2>Your canvas is empty</h2>
+                        <p>Drag a section from the sidebar to start building.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Hidden file input for image replacement -->
+    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+
+    <script src="builder.js"></script>
+</body>
+
+</html>

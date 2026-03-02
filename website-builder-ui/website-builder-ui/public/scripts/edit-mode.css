@@ -1,0 +1,117 @@
+/* edit-mode.css - Lightweight styles for in-place editing */
+:root {
+    --edit-primary: #6366f1;
+    --edit-danger: #ef4444;
+    --edit-bg: #0f172a;
+    --edit-text: #ffffff;
+    --edit-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Section Highlighting */
+.builder-section {
+    position: relative !important;
+    transition: var(--edit-transition);
+}
+
+.builder-section:hover {
+    outline: 2px solid var(--edit-primary) !important;
+    outline-offset: -2px;
+}
+
+/* Controls Toolbar */
+.section-controls {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--edit-bg);
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--edit-transition);
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.builder-section:hover .section-controls {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.control-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--edit-text);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: var(--edit-transition);
+}
+
+.control-btn:hover {
+    background: var(--edit-primary);
+}
+
+.control-btn.delete:hover {
+    background: var(--edit-danger);
+}
+
+.move-handle {
+    cursor: grab;
+}
+
+/* Drop Zones */
+.drop-zone {
+    height: 4px;
+    width: 100%;
+    background: transparent;
+    transition: var(--edit-transition);
+    position: relative;
+    z-index: 9999;
+}
+
+.drop-zone.active {
+    height: 40px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 2px dashed var(--edit-primary);
+    margin: 8px 0;
+}
+
+/* Image Edit Labels */
+.img-edit-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(99, 102, 241, 0.9);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0;
+    transition: var(--edit-transition);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+[data-editable-img-container]:hover .img-edit-label {
+    opacity: 1;
+}
+
+/* Editable Text Feedback */
+[contenteditable="true"]:focus {
+    outline: 2px solid var(--edit-primary) !important;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 4px;
+    padding: 2px;
+}

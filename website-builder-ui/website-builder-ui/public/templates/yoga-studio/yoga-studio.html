@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .skewed {
+            transform: skew(20deg);
+            transform-origin: top left;
+        }
+        .skewed-content {
+            transform: skew(-20deg);
+        }
+        .glassmorphism {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .dark-neon {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        .dark-neon-accent {
+            color: #ff69b4;
+        }
+    </style>
+</head>
+<body class="dark-neon">
+    <header class="skewed">
+        <nav class="skewed-content container mx-auto p-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">Yoga Studio</a>
+            <ul class="flex items-center space-x-4">
+                <li><a href="#" class="text-lg">Home</a></li>
+                <li><a href="#" class="text-lg">Classes</a></li>
+                <li><a href="#" class="text-lg">About</a></li>
+                <li><a href="#" class="text-lg">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container mx-auto p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
+        <section class="glassmorphism">
+            <h1 class="text-3xl font-bold mb-4">Find Your Inner Peace</h1>
+            <p class="text-lg mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            <img src="https://source.unsplash.com/600x400/?yoga,meditation" alt="Yoga" class="w-full h-64 object-cover mb-6">
+            <button class="bg-dark-neon-accent hover:bg-dark-neon-accent-hover text-white font-bold py-2 px-4 rounded">Book a Class</button>
+        </section>
+        <section class="mt-12">
+            <h2 class="text-2xl font-bold mb-4">Our Classes</h2>
+            <div class="bento-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-gray-200 p-4 rounded">
+                    <h3 class="text-lg font-bold mb-2">Yoga for Beginners</h3>
+                    <p class="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <button class="bg-dark-neon-accent hover:bg-dark-neon-accent-hover text-white font-bold py-2 px-4 rounded">Book Now</button>
+                </div>
+                <div class="bg-gray-200 p-4 rounded">
+                    <h3 class="text-lg font-bold mb-2">Vinyasa Flow</h3>
+                    <p class="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <button class="bg-dark-neon-accent hover:bg-dark-neon-accent-hover text-white font-bold py-2 px-4 rounded">Book Now</button>
+                </div>
+                <div class="bg-gray-200 p-4 rounded">
+                    <h3 class="text-lg font-bold mb-2">Restorative Yoga</h3>
+                    <p class="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <button class="bg-dark-neon-accent hover:bg-dark-neon-accent-hover text-white font-bold py-2 px-4 rounded">Book Now</button>
+                </div>
+            </div>
+        </section>
+        <section class="mt-12">
+            <h2 class="text-2xl font-bold mb-4">Mindfulness Simulator</h2>
+            <div class="glassmorphism p-4">
+                <canvas id="mindfulness-simulator" width="400" height="200"></canvas>
+                <script>
+                    const canvas = document.getElementById('mindfulness-simulator');
+                    const ctx = canvas.getContext('2d');
+                    let breath = 0;
+                    function animate() {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.beginPath();
+                        ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, 2 * Math.PI);
+                        ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+                        ctx.fill();
+                        breath += 0.01;
+                        ctx.beginPath();
+                        ctx.arc(canvas.width / 2, canvas.height / 2, 50 + Math.sin(breath) * 20, 0, 2 * Math.PI);
+                        ctx.fillStyle = 'rgba(0, 255, 0, 0.5)';
+                        ctx.fill();
+                        requestAnimationFrame(animate);
+                    }
+                    animate();
+                </script>
+            </div>
+        </section>
+    </main>
+    <footer class="skewed">
+        <div class="skewed-content container mx-auto p-4 flex justify-between items-center">
+            <p class="text-sm">&copy; 2023 Yoga Studio</p>
+            <ul class="flex items-center space-x-4">
+                <li><a href="#" class="text-sm">Terms of Service</a></li>
+                <li><a href="#" class="text-sm">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

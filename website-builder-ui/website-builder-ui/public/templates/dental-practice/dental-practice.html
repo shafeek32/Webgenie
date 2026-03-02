@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#2c3e50] text-white h-screen">
+    <header class="bg-[#1a1d23] py-4">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold font-Syncopate">Dental Care</a>
+            <ul class="flex items-center space-x-4">
+                <li><a href="#" class="text-lg font-Outfit hover:text-[#03A9F4]">Home</a></li>
+                <li><a href="#" class="text-lg font-Outfit hover:text-[#03A9F4]">About</a></li>
+                <li><a href="#" class="text-lg font-Outfit hover:text-[#03A9F4]">Services</a></li>
+                <li><a href="#" class="text-lg font-Outfit hover:text-[#03A9F4]">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container mx-auto p-4 pt-6">
+        <section class="bg-[#1a1d23] py-8 rounded-3xl shadow-2xl">
+            <h1 class="text-5xl font-bold font-Playfair text-center">Welcome to Dental Care</h1>
+            <p class="text-lg font-Outfit text-center mt-4">Our clinic provides a wide range of dental services, from routine check-ups to complex procedures.</p>
+            <div class="flex justify-center mt-8">
+                <button class="bg-[#03A9F4] py-2 px-4 rounded-lg text-lg font-Outfit hover:bg-[#03A9F4]/80">Book an Appointment</button>
+            </div>
+        </section>
+        <section class="mt-12">
+            <h2 class="text-4xl font-bold font-Syncopate">Our Services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+                <div class="bg-[#1a1d23] py-4 rounded-3xl shadow-2xl">
+                    <h3 class="text-2xl font-bold font-Playfair text-center">Dental Check-ups</h3>
+                    <p class="text-lg font-Outfit text-center mt-2">Regular check-ups help prevent oral health issues.</p>
+                </div>
+                <div class="bg-[#1a1d23] py-4 rounded-3xl shadow-2xl">
+                    <h3 class="text-2xl font-bold font-Playfair text-center">Teeth Whitening</h3>
+                    <p class="text-lg font-Outfit text-center mt-2">Brighten your smile with our professional teeth whitening services.</p>
+                </div>
+                <div class="bg-[#1a1d23] py-4 rounded-3xl shadow-2xl">
+                    <h3 class="text-2xl font-bold font-Playfair text-center">Dental Implants</h3>
+                    <p class="text-lg font-Outfit text-center mt-2">Replace missing teeth with our high-quality dental implants.</p>
+                </div>
+            </div>
+        </section>
+        <section class="mt-12">
+            <h2 class="text-4xl font-bold font-Syncopate">Symptom Checker</h2>
+            <div class="bg-[#1a1d23] py-8 rounded-3xl shadow-2xl mt-4">
+                <p class="text-lg font-Outfit text-center">Check your symptoms and get a recommendation for the next steps.</p>
+                <form id="symptom-form" class="flex flex-col items-center mt-4">
+                    <label for="symptom" class="text-lg font-Outfit mb-2">Select your symptoms:</label>
+                    <select id="symptom" class="bg-[#2c3e50] py-2 px-4 rounded-lg text-lg font-Outfit text-white mb-4">
+                        <option value="toothache">Toothache</option>
+                        <option value="bleedingGums">Bleeding Gums</option>
+                        <option value="sensitiveTeeth">Sensitive Teeth</option>
+                    </select>
+                    <button type="submit" class="bg-[#03A9F4] py-2 px-4 rounded-lg text-lg font-Outfit hover:bg-[#03A9F4]/80">Check Symptoms</button>
+                </form>
+                <div id="symptom-result" class="mt-4"></div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const symptomForm = document.getElementById('symptom-form');
+        const symptomResult = document.getElementById('symptom-result');
+
+        symptomForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const symptom = document.getElementById('symptom').value;
+            const result = getSymptomResult(symptom);
+            symptomResult.innerHTML = result;
+        });
+
+        function getSymptomResult(symptom) {
+            switch (symptom) {
+                case 'toothache':
+                    return 'You may have a cavity or an abscess. Please book an appointment with our dentist to get a proper diagnosis and treatment.';
+                case 'bleedingGums':
+                    return 'You may have gum disease. Please book an appointment with our dentist to get a proper diagnosis and treatment.';
+                case 'sensitiveTeeth':
+                    return 'You may have sensitive teeth due to receding gums or tooth decay. Please book an appointment with our dentist to get a proper diagnosis and treatment.';
+                default:
+                    return 'Please select a symptom.';
+            }
+        }
+    </script>
+</body>
+</html>
