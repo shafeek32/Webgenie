@@ -23,9 +23,10 @@ interface HeaderProps {
   setSidebarOpen: (open: boolean) => void
   hasGenerated: boolean
   onDownload?: () => void
+  onSave?: () => void
 }
 
-export function Header({ sidebarOpen, setSidebarOpen, hasGenerated, onDownload }: HeaderProps) {
+export function Header({ sidebarOpen, setSidebarOpen, hasGenerated, onDownload, onSave }: HeaderProps) {
   const [viewport, setViewport] = useState<"desktop" | "tablet" | "mobile">("desktop")
 
   return (
@@ -89,6 +90,10 @@ export function Header({ sidebarOpen, setSidebarOpen, hasGenerated, onDownload }
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2">
               <Eye className="w-4 h-4" />
               <span className="hidden sm:inline">Preview</span>
+            </Button>
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2" onClick={onSave}>
+              <Download className="w-4 h-4" />
+              <span className="hidden sm:inline">Save</span>
             </Button>
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2" onClick={onDownload}>
               <Download className="w-4 h-4" />

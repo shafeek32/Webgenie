@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Sparkles } from "lucide-react"
 import { saveAs } from "file-saver"
 import JSZip from "jszip"
+import { DndContext, DragEndEvent } from "@dnd-kit/core"
 import { useToast } from "@/hooks/use-toast"
 import { Header } from "@/components/builder/header"
 import { PromptPanel } from "@/components/builder/prompt-panel"
@@ -139,6 +140,37 @@ export function WebsiteBuilder() {
     }
   }
 
+  const handleSaveLayout = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/pages/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          projectId: "default-project-id", // Hardcoded for single-tenant, or use real
+          pageName: "home",
+          components: elements
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast({ title: "Layout Saved", description: "Your page layout has been saved." });
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (err: any) {
+      toast({ title: "Save failed", description: err.message, variant: "destructive" });
+    }
+  }
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over && over.id === "canvas") {
+      if (active.data.current?.type === "component-palette-item") {
+        handleAddElement(active.data.current.componentType);
+      }
+    }
+  }
+
   const handleElementSelect = (element: WebsiteElement) => {
     setSelectedElement(element)
     setPropertiesOpen(true)
@@ -180,71 +212,73 @@ export function WebsiteBuilder() {
 
   return (
     <div className="h-screen flex flex-col bg-background overflow-hidden">
-      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} hasGenerated={hasGenerated} onDownload={handleDownload} />
+      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} hasGenerated={hasGenerated} onDownload={handleDownload} onSave={handleSaveLayout} />
 
-      <div className="flex-1 flex overflow-hidden">
-        {/* Components Sidebar */}
-        <ComponentsSidebar open={sidebarOpen} onAddElement={handleAddElement} hasGenerated={hasGenerated} />
+      <DndContext onDragEnd={handleDragEnd}>
+        <div className="flex-1 flex overflow-hidden">
+          {/* Components Sidebar */}
+          <ComponentsSidebar open={sidebarOpen} onAddElement={handleAddElement} hasGenerated={hasGenerated} />
 
-        {/* Main Content Area */}
-        <div className="flex-1 flex flex-col min-w-0">
-          {!hasGenerated ? (
-            <PromptPanel
-              prompt={prompt}
-              setPrompt={setPrompt}
-              onGenerate={handleGenerate}
-              generationState={generationState}
-            />
-          ) : (
-            <div className="flex-1 flex flex-col min-h-0">
-              {/* Mini Prompt Bar - Centered Command Bar style */}
-              <div className="flex justify-center p-4">
-                <div className="w-full max-w-2xl flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2 shadow-lg ring-1 ring-accent/5 focus-within:ring-2 focus-within:ring-accent/20 transition-all">
-                  <Sparkles className="w-4 h-4 text-accent animate-pulse" />
-                  <input
-                    type="text"
-                    value={prompt}
-                    onChange={(e) => setPrompt(e.target.value)}
-                    placeholder="Describe changes (e.g., 'change hero background to blue')..."
-                    className="flex-1 bg-transparent border-none py-1 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") handleGenerate()
-                    }}
-                  />
-                  <button
-                    onClick={handleGenerate}
-                    disabled={generationState === "generating"}
-                    className="px-4 py-1.5 bg-accent text-accent-foreground rounded-full text-xs font-semibold hover:bg-accent/90 transition-colors disabled:opacity-50"
-                  >
-                    {generationState === "generating" ? "Updating..." : "Update"}
-                  </button>
-                </div>
-              </div>
-
-              {/* Preview */}
-              <PreviewPanel
-                elements={elements}
-                selectedElement={selectedElement}
-                onElementSelect={handleElementSelect}
-                onElementUpdate={handleElementUpdate}
-                onDeleteElement={handleDeleteElement}
-                onMoveElement={handleMoveElement}
+          {/* Main Content Area */}
+          <div className="flex-1 flex flex-col min-w-0">
+            {!hasGenerated ? (
+              <PromptPanel
+                prompt={prompt}
+                setPrompt={setPrompt}
+                onGenerate={handleGenerate}
                 generationState={generationState}
-                generatedHtml={generatedHtml}
-                error={error}
               />
-            </div>
-          )}
-        </div>
+            ) : (
+              <div className="flex-1 flex flex-col min-h-0">
+                {/* Mini Prompt Bar - Centered Command Bar style */}
+                <div className="flex justify-center p-4">
+                  <div className="w-full max-w-2xl flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2 shadow-lg ring-1 ring-accent/5 focus-within:ring-2 focus-within:ring-accent/20 transition-all">
+                    <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+                    <input
+                      type="text"
+                      value={prompt}
+                      onChange={(e) => setPrompt(e.target.value)}
+                      placeholder="Describe changes (e.g., 'change hero background to blue')..."
+                      className="flex-1 bg-transparent border-none py-1 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") handleGenerate()
+                      }}
+                    />
+                    <button
+                      onClick={handleGenerate}
+                      disabled={generationState === "generating"}
+                      className="px-4 py-1.5 bg-accent text-accent-foreground rounded-full text-xs font-semibold hover:bg-accent/90 transition-colors disabled:opacity-50"
+                    >
+                      {generationState === "generating" ? "Updating..." : "Update"}
+                    </button>
+                  </div>
+                </div>
 
-        {/* Properties Panel */}
-        <PropertiesPanel
-          open={propertiesOpen && hasGenerated}
-          element={selectedElement}
-          onClose={() => setPropertiesOpen(false)}
-          onUpdate={handleElementUpdate}
-        />
-      </div>
+                {/* Preview */}
+                <PreviewPanel
+                  elements={elements}
+                  selectedElement={selectedElement}
+                  onElementSelect={handleElementSelect}
+                  onElementUpdate={handleElementUpdate}
+                  onDeleteElement={handleDeleteElement}
+                  onMoveElement={handleMoveElement}
+                  generationState={generationState}
+                  generatedHtml={generatedHtml}
+                  error={error}
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Properties Panel */}
+          <PropertiesPanel
+            open={propertiesOpen && hasGenerated}
+            element={selectedElement}
+            onClose={() => setPropertiesOpen(false)}
+            onUpdate={handleElementUpdate}
+          />
+        </div>
+      </DndContext>
     </div>
   )
 }

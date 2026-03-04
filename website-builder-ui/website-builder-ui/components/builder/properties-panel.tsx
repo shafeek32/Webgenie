@@ -32,6 +32,20 @@ const paddings = [
   { value: "py-24", label: "Extra Large" },
 ]
 
+const textColors = [
+  { value: "text-foreground", label: "Default", color: "#ffffff" },
+  { value: "text-muted-foreground", label: "Muted", color: "#a1a1aa" },
+  { value: "text-primary", label: "Primary", color: "#3b82f6" },
+  { value: "text-destructive", label: "Destructive", color: "#ef4444" },
+]
+
+const fontSizes = [
+  { value: "text-sm", label: "Small" },
+  { value: "text-base", label: "Medium" },
+  { value: "text-2xl", label: "Large" },
+  { value: "text-4xl", label: "Extra Large" },
+]
+
 export function PropertiesPanel({ open, element, onClose, onUpdate }: PropertiesPanelProps) {
   if (!element) return null
 
@@ -135,6 +149,78 @@ export function PropertiesPanel({ open, element, onClose, onUpdate }: Properties
               ))}
             </div>
           </div>
+
+          {/* Text Color for Headings/Text/Button */}
+          {["hero", "text", "button"].includes(element.type) && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+                <Palette className="w-4 h-4 text-muted-foreground" />
+                Text Color
+              </div>
+              <div className="grid grid-cols-4 gap-2">
+                {textColors.map(({ value, label, color }) => (
+                  <button
+                    key={value}
+                    onClick={() => handleStyleUpdate("color", value)}
+                    className={cn(
+                      "w-full aspect-square rounded-full border-2 transition-all",
+                      element.styles.color === value
+                        ? "border-accent scale-95"
+                        : "border-border hover:border-muted-foreground/30",
+                    )}
+                    style={{ backgroundColor: color }}
+                    title={label}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Font Size for Headings/Text */}
+          {["hero", "text"].includes(element.type) && (
+            <div className="space-y-3">
+              <div className="text-sm font-medium text-foreground">Font Size</div>
+              <div className="grid grid-cols-2 gap-2">
+                {fontSizes.map(({ value, label }) => (
+                  <button
+                    key={value}
+                    onClick={() => handleStyleUpdate("fontSize", value)}
+                    className={cn(
+                      "px-3 py-2 rounded-lg border text-sm transition-all",
+                      element.styles.fontSize === value
+                        ? "border-accent bg-accent/10 text-accent"
+                        : "border-border text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Width/Height for Image */}
+          {element.type === "image" && (
+            <div className="space-y-3">
+              <div className="text-sm font-medium text-foreground">Dimensions</div>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="Width (e.g. 100%)"
+                  value={element.styles.width || ""}
+                  onChange={(e) => handleStyleUpdate("width", e.target.value)}
+                  className="w-full px-3 py-2 bg-input border border-border rounded-lg text-sm"
+                />
+                <input
+                  type="text"
+                  placeholder="Height"
+                  value={element.styles.height || ""}
+                  onChange={(e) => handleStyleUpdate("height", e.target.value)}
+                  className="w-full px-3 py-2 bg-input border border-border rounded-lg text-sm"
+                />
+              </div>
+            </div>
+          )}
 
           {/* Content Fields */}
           {element.content && Object.keys(element.content).length > 0 && (

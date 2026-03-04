@@ -45,7 +45,7 @@ export async function POST(req) {
       return NextResponse.json({ error: "Prompt is required" }, { status: 400 })
     }
 
-    const apiKey = process.env.GROQ_API_KEY
+    const apiKey = process.env.GROQ_API_KEY || process.env.XAI_API_KEY
     if (!apiKey) {
       return NextResponse.json({ error: "Server misconfiguration: missing Groq API key" }, { status: 500 })
     }

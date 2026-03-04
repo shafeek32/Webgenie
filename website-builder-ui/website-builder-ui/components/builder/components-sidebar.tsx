@@ -14,6 +14,7 @@ import {
   ChevronDown,
 } from "lucide-react"
 import { useState } from "react"
+import { useDraggable } from "@dnd-kit/core"
 
 interface ComponentsSidebarProps {
   open: boolean
@@ -50,6 +51,31 @@ const componentGroups = [
     items: [{ type: "footer", icon: ListTodo, label: "Footer" }],
   },
 ]
+
+function DraggableSidebarItem({ type, icon: Icon, label, onAddElement }: any) {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: `palette-${type}`,
+    data: { type: "component-palette-item", componentType: type }
+  })
+
+  const style = transform ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`, zIndex: 100 } : undefined
+
+  return (
+    <button
+      onClick={() => onAddElement(type)}
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+      className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-secondary rounded-lg transition-colors group cursor-grab active:cursor-grabbing"
+    >
+      <div className="w-8 h-8 rounded-md bg-secondary flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+        <Icon className="w-4 h-4 text-muted-foreground group-hover:text-accent" />
+      </div>
+      {label}
+    </button>
+  )
+}
 
 export function ComponentsSidebar({ open, onAddElement, hasGenerated }: ComponentsSidebarProps) {
   const [expandedGroups, setExpandedGroups] = useState<string[]>(["Layout", "Content", "Interactive"])
@@ -88,21 +114,14 @@ export function ComponentsSidebar({ open, onAddElement, hasGenerated }: Componen
 
               {expandedGroups.includes(group.name) && (
                 <div className="space-y-1 mt-1">
-                  {group.items.map(({ type, icon: Icon, label }) => (
-                    <button
-                      key={type}
-                      onClick={() => onAddElement(type)}
-                      draggable
-                      onDragStart={(e) => {
-                        e.dataTransfer.setData("componentType", type)
-                      }}
-                      className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-secondary rounded-lg transition-colors group cursor-grab active:cursor-grabbing"
-                    >
-                      <div className="w-8 h-8 rounded-md bg-secondary flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                        <Icon className="w-4 h-4 text-muted-foreground group-hover:text-accent" />
-                      </div>
-                      {label}
-                    </button>
+                  {group.items.map((item) => (
+                    <DraggableSidebarItem
+                      key={item.type}
+                      type={item.type}
+                      icon={item.icon}
+                      label={item.label}
+                      onAddElement={onAddElement}
+                    />
                   ))}
                 </div>
               )}

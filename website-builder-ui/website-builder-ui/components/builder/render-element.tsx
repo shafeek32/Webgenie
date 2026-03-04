@@ -3,6 +3,7 @@
 import { useState } from "react"
 import type { WebsiteElement } from "@/lib/types"
 import { cn } from "@/lib/utils"
+import { useToast } from "@/hooks/use-toast"
 import type { JSX } from "react/jsx-runtime" // Import JSX to fix the undeclared variable error
 
 interface RenderElementProps {
@@ -12,6 +13,7 @@ interface RenderElementProps {
 
 export function RenderElement({ element, onUpdate }: RenderElementProps) {
   const [editingField, setEditingField] = useState<string | null>(null)
+  const { toast } = useToast()
 
   const handleTextEdit = (field: string, value: string) => {
     onUpdate({
@@ -31,7 +33,7 @@ export function RenderElement({ element, onUpdate }: RenderElementProps) {
     className?: string
     as?: keyof JSX.IntrinsicElements
   }) => {
-    const value = element.content[field] || ""
+    const value = String((element.content as any)[field] || "")
     const isEditing = editingField === field
 
     if (isEditing) {
@@ -58,18 +60,21 @@ export function RenderElement({ element, onUpdate }: RenderElementProps) {
     )
   }
 
-  const { styles, content, type } = element
-  const baseClasses = cn(styles.backgroundColor, styles.textAlign, styles.padding, "px-8")
+  const { styles, type } = element
+  const content = element.content as any
+  const baseClasses = cn(styles.backgroundColor, styles.textAlign, styles.padding, styles.color, "px-8")
+
+  const textStyleClasses = cn(styles.color, styles.fontSize);
 
   switch (type) {
     case "hero":
       return (
         <div className={cn(baseClasses, "space-y-6")}>
-          <EditableText field="title" as="h1" className="text-4xl md:text-5xl font-bold text-foreground" />
+          <EditableText field="title" as="h1" className={cn("text-4xl md:text-5xl font-bold", textStyleClasses || "text-foreground")} />
           <EditableText field="subtitle" as="p" className="text-xl text-muted-foreground max-w-2xl mx-auto" />
-          <button className="px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
+          <a href={content.link || "#"} className="inline-block px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
             <EditableText field="buttonText" />
-          </button>
+          </a>
         </div>
       )
 
@@ -91,7 +96,7 @@ export function RenderElement({ element, onUpdate }: RenderElementProps) {
     case "text":
       return (
         <div className={cn(baseClasses)}>
-          <EditableText field="text" as="p" className="text-foreground leading-relaxed" />
+          <EditableText field="text" as="p" className={cn("leading-relaxed", textStyleClasses || "text-foreground")} />
         </div>
       )
 
@@ -99,9 +104,10 @@ export function RenderElement({ element, onUpdate }: RenderElementProps) {
       return (
         <div className={cn(baseClasses, "flex justify-center")}>
           <img
-            src={content.src || "/placeholder.svg"}
+            src={content.src || content.url || "/placeholder.svg"}
             alt={content.alt || "Image"}
-            className="rounded-xl max-w-full h-auto border border-border"
+            className="rounded-xl border border-border"
+            style={{ width: styles.width || "auto", height: styles.height || "auto", maxWidth: "100%" }}
           />
         </div>
       )
@@ -109,30 +115,52 @@ export function RenderElement({ element, onUpdate }: RenderElementProps) {
     case "button":
       return (
         <div className={cn(baseClasses)}>
-          <button className="px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
+          <a href={content.link || "#"} className="inline-block px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
             <EditableText field="text" />
-          </button>
+          </a>
         </div>
       )
 
     case "form":
       return (
         <div className={cn(baseClasses, "max-w-md mx-auto")}>
-          <div className="space-y-4 p-6 bg-card rounded-xl border border-border">
+          <form
+            className="space-y-4 p-6 bg-card rounded-xl border border-border"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const data = Object.fromEntries(formData.entries());
+              const collection = content.collectionName || "contacts";
+
+              try {
+                const res = await fetch(`http://localhost:5000/api/builder/data/${collection}`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data)
+                });
+                if (!res.ok) throw new Error("Submission failed");
+                toast({ title: "Success", description: "Form submitted successfully!" });
+                e.currentTarget.reset();
+              } catch (err: any) {
+                toast({ title: "Error", description: err.message, variant: "destructive" });
+              }
+            }}
+          >
             {(content.fields || []).map((field: string, i: number) => (
               <div key={i}>
                 <label className="block text-sm font-medium text-foreground mb-1">{field}</label>
                 <input
+                  name={field.toLowerCase()}
                   type="text"
                   placeholder={`Enter ${field.toLowerCase()}`}
                   className="w-full px-4 py-2 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground"
                 />
               </div>
             ))}
-            <button className="w-full px-4 py-2 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
+            <button type="submit" className="w-full px-4 py-2 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
               {content.submitText || "Submit"}
             </button>
-          </div>
+          </form>
         </div>
       )
 

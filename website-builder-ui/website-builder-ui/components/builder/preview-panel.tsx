@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { GripVertical, Trash2, Edit3, Move } from "lucide-react"
+import { useDroppable } from "@dnd-kit/core"
 import { Spinner } from "@/components/ui/spinner"
 import type { WebsiteElement, GenerationState } from "@/lib/types"
 import { RenderElement } from "@/components/builder/render-element"
@@ -36,6 +37,10 @@ export function PreviewPanel({
   const [hoveredElement, setHoveredElement] = useState<string | null>(null)
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+
+  const { setNodeRef, isOver } = useDroppable({
+    id: "canvas",
+  });
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
     setDraggedIndex(index)
@@ -78,7 +83,7 @@ export function PreviewPanel({
           </div>
 
           {/* Preview Content */}
-          <div className="min-h-[500px] bg-background relative">
+          <div ref={setNodeRef} className={cn("min-h-[500px] relative transition-colors", isOver ? "bg-accent/10" : "bg-background")}>
             {generationState === "generating" && (
               <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm z-50">
                 <div className="text-center space-y-4">

@@ -1,7 +1,7 @@
 export interface WebsiteElement {
   id: string
   type: string
-  content: Record<string, unknown>
+  content: any
   styles: {
     backgroundColor?: string
     textAlign?: string
