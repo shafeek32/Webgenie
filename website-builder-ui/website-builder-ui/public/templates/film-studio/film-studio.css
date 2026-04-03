@@ -1,0 +1,374 @@
+/* film-studio.css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+:root {
+    --bg: #0a0a0a;
+    --text: #f0f0f0;
+    --gold: #e8c962;
+    --muted: #888;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Inter', sans-serif
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden
+}
+
+.film-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+    animation: grain 0.5s steps(2) infinite
+}
+
+@keyframes grain {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(-2%, -1%)
+    }
+
+    50% {
+        transform: translate(1%, 2%)
+    }
+
+    75% {
+        transform: translate(-1%, 1%)
+    }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95), transparent)
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--text);
+    letter-spacing: 0.05em
+}
+
+.logo span {
+    color: var(--gold)
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s
+}
+
+.nav a:hover {
+    color: var(--text)
+}
+
+.btn-contact {
+    border: 1px solid var(--gold) !important;
+    color: var(--gold) !important;
+    padding: 0.5rem 1.2rem
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden
+}
+
+.hero-reel {
+    height: 100%;
+    position: relative
+}
+
+.reel-slide {
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 4rem 8rem
+}
+
+.reel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 50%)
+}
+
+.reel-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px
+}
+
+.reel-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem
+}
+
+.reel-content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 9vw, 8rem);
+    letter-spacing: 0.05em;
+    line-height: 0.95;
+    margin-bottom: 1.2rem
+}
+
+.reel-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    max-width: 400px;
+    line-height: 1.7;
+    margin-bottom: 2rem
+}
+
+.reel-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg);
+    padding: 0.8rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    letter-spacing: 0.05em
+}
+
+.reel-btn:hover {
+    opacity: 0.85
+}
+
+.reel-controls {
+    position: absolute;
+    bottom: 3rem;
+    right: 4rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10
+}
+
+.reel-dot {
+    width: 24px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background 0.2s
+}
+
+.reel-dot.active {
+    background: var(--gold)
+}
+
+.films {
+    padding: 6rem 4rem;
+    background: var(--bg)
+}
+
+.films-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem
+}
+
+.films-header h2 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    letter-spacing: 0.05em
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 0.5rem
+}
+
+.tab {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--muted);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    transition: all 0.2s
+}
+
+.tab.active,
+.tab:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg)
+}
+
+.films-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem
+}
+
+.film-card {
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s
+}
+
+.film-card:hover {
+    transform: scale(1.02)
+}
+
+.film-poster {
+    height: 280px;
+    position: relative
+}
+
+.film-info {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem
+}
+
+.film-info h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    font-size: 1.1rem
+}
+
+.film-info span {
+    font-size: 0.75rem;
+    color: var(--muted)
+}
+
+.awards {
+    padding: 4rem;
+    background: #0f0f0f;
+    overflow: hidden
+}
+
+.awards h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    text-align: center
+}
+
+.awards-bar {
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    animation: scroll-awards 20s linear infinite
+}
+
+.award {
+    padding: 1rem 3rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.875rem;
+    color: var(--muted);
+    letter-spacing: 0.1em
+}
+
+@keyframes scroll-awards {
+    from {
+        transform: translateX(0)
+    }
+
+    to {
+        transform: translateX(-50%)
+    }
+}
+
+.contact-cta {
+    padding: 8rem 4rem;
+    text-align: center;
+    background: linear-gradient(135deg, #0a0a0a 40%, #1a1a0a)
+}
+
+.cta-inner h2 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem
+}
+
+.cta-inner p {
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7
+}
+
+.cta-btn {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 1rem 3rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s
+}
+
+.cta-btn:hover {
+    background: var(--gold);
+    color: var(--bg)
+}
+
+.footer {
+    padding: 2.5rem 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 0.85rem
+}

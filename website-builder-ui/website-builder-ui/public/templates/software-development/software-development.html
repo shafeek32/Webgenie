@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevForge – Custom Software Development Agency</title>
+    <meta name="description" content="Building world-class web apps, mobile apps, and enterprise software solutions with cutting-edge technology.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="software-development.css">
+</head>
+<body>
+    <canvas id="codeCanvas"></canvas>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <span class="logo-bracket">{</span>DevForge<span class="logo-bracket">}</span>
+            </a>
+            <nav class="nav">
+                <a href="#work">Our Work</a>
+                <a href="#services">Services</a>
+                <a href="#stack">Tech Stack</a>
+                <a href="#contact" class="btn-nav">Hire Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="code-badge">
+                <span class="code-line"><span class="kw">const</span> vision = <span class="str">"Build. Ship. Scale."</span>;</span>
+            </div>
+            <h1>We Build Software<br>That <span class="grad-text">Moves the World</span></h1>
+            <p>From MVP to enterprise platform — we engineer scalable, performant, and beautiful digital products that users love.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Start a Project</a>
+                <a href="#work" class="btn-ghost">View Our Work</a>
+            </div>
+        </div>
+        <div class="hero-code">
+            <div class="code-editor">
+                <div class="editor-tab">app.tsx</div>
+                <div class="editor-body">
+                    <pre><code><span class="kw">function</span> <span class="fn">App</span>() {
+  <span class="kw">const</span> [data, setData] = <span class="fn">useState</span>([]);
+
+  <span class="fn">useEffect</span>(() => {
+    <span class="fn">fetchProducts</span>().then(setData);
+  }, []);
+
+  <span class="kw">return</span> (
+    &lt;<span class="tag">ProductList</span>
+      items={data}
+      onSelect={<span class="fn">handleSelect</span>}
+    /&gt;
+  );
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-num" data-target="300">0</span><span>+</span><span class="stat-lbl">Projects Delivered</span></div>
+                <div class="stat-item"><span class="stat-num" data-target="50">0</span><span>+</span><span class="stat-lbl">Expert Engineers</span></div>
+                <div class="stat-item"><span class="stat-num" data-target="8">0</span><span>+</span><span class="stat-lbl">Years in Business</span></div>
+                <div class="stat-item"><span class="stat-num" data-target="97">0</span><span>%</span><span class="stat-lbl">Client Satisfaction</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="work" id="work">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2>Work That <em>Speaks</em></h2>
+            </div>
+            <div class="work-grid">
+                <div class="work-card large">
+                    <div class="work-img gradient-1">
+                        <span>E-Commerce Platform</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>ShopFlow Pro</h3>
+                        <p>Full-stack e-commerce with React, Node.js & PostgreSQL</p>
+                        <div class="tags"><span>React</span><span>Node.js</span><span>AWS</span></div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img gradient-2">
+                        <span>FinTech App</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>PayLedger</h3>
+                        <p>Real-time payment processing platform</p>
+                        <div class="tags"><span>Next.js</span><span>Stripe</span></div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img gradient-3">
+                        <span>Healthcare SaaS</span>
+                    </div>
+                    <div class="work-info">
+                        <h3>MedTrack</h3>
+                        <p>Patient management & telemedicine solution</p>
+                        <div class="tags"><span>Flutter</span><span>Firebase</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-dev" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Services</span>
+                <h2>What We <em>Build</em></h2>
+            </div>
+            <div class="services-grid">
+                <div class="svc-card"><div class="svc-icon">🌐</div><h3>Web Development</h3><p>Custom web apps, SPAs, and progressive web apps with modern frameworks.</p></div>
+                <div class="svc-card"><div class="svc-icon">📱</div><h3>Mobile Apps</h3><p>Native iOS & Android and cross-platform React Native & Flutter apps.</p></div>
+                <div class="svc-card"><div class="svc-icon">⚙️</div><h3>Backend & APIs</h3><p>Scalable REST and GraphQL APIs with microservices architecture.</p></div>
+                <div class="svc-card"><div class="svc-icon">☁️</div><h3>DevOps & Cloud</h3><p>CI/CD pipelines, Kubernetes orchestration, and cloud-native deployments.</p></div>
+                <div class="svc-card"><div class="svc-icon">🛡️</div><h3>QA & Testing</h3><p>Automated testing suites, performance testing, and security audits.</p></div>
+                <div class="svc-card"><div class="svc-icon">🔄</div><h3>Legacy Modernization</h3><p>Migrate, refactor, and modernize your outdated systems for the cloud era.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack-section" id="stack">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Technology</span>
+                <h2>Our <em>Tech Stack</em></h2>
+            </div>
+            <div class="stack-categories">
+                <div class="stack-cat">
+                    <h4>Frontend</h4>
+                    <div class="stack-pills">
+                        <span>React</span><span>Next.js</span><span>Vue</span><span>TypeScript</span><span>Tailwind</span>
+                    </div>
+                </div>
+                <div class="stack-cat">
+                    <h4>Backend</h4>
+                    <div class="stack-pills">
+                        <span>Node.js</span><span>Python</span><span>Go</span><span>GraphQL</span><span>REST</span>
+                    </div>
+                </div>
+                <div class="stack-cat">
+                    <h4>Mobile</h4>
+                    <div class="stack-pills">
+                        <span>React Native</span><span>Flutter</span><span>Swift</span><span>Kotlin</span>
+                    </div>
+                </div>
+                <div class="stack-cat">
+                    <h4>Cloud & DevOps</h4>
+                    <div class="stack-pills">
+                        <span>AWS</span><span>GCP</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-band">
+        <div class="container">
+            <h2>Ready to build something <em>amazing</em>?</h2>
+            <p>Let's turn your idea into a high-performance digital product.</p>
+            <a href="#contact" class="btn-primary" id="contact">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><span class="logo-bracket">{</span>DevForge<span class="logo-bracket">}</span></a>
+                    <p>Crafting digital excellence since 2018.</p>
+                </div>
+                <div class="footer-col"><h4>Services</h4><a href="#">Web Dev</a><a href="#">Mobile Apps</a><a href="#">Backend</a><a href="#">DevOps</a></div>
+                <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a><a href="#">Contact</a></div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 DevForge Software. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="software-development.js"></script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+/* portfolio-doctor.css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+:root {
+    --bg: #f0f9ff;
+    --white: #ffffff;
+    --blue: #0ea5e9;
+    --navy: #0c4a6e;
+    --text: #1e3a5f;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-body: 'Nunito', sans-serif
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(240, 249, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--border)
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    text-decoration: none;
+    color: var(--navy)
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s
+}
+
+.nav a:hover {
+    color: var(--blue)
+}
+
+.btn-appt {
+    background: var(--blue);
+    color: #fff;
+    padding: 0.55rem 1.3rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.875rem
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 9rem 3rem 5rem;
+    background: linear-gradient(160deg, #f0f9ff, #e0f2fe)
+}
+
+.hero-creds {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem
+}
+
+.hero-creds span {
+    font-size: 0.75rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    font-weight: 600
+}
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--navy)
+}
+
+.hero-content h1 em {
+    font-style: italic;
+    color: var(--blue)
+}
+
+.hero-content p {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 440px;
+    line-height: 1.8;
+    margin-bottom: 2rem
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: opacity 0.2s
+}
+
+.btn-primary:hover {
+    opacity: 0.85
+}
+
+.btn-ghost {
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.2s
+}
+
+.btn-ghost:hover {
+    background: var(--blue);
+    color: #fff
+}
+
+.hero-trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem
+}
+
+.trust-item {
+    text-align: center;
+    padding: 1.2rem;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--border)
+}
+
+.trust-item strong {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue);
+    font-family: var(--font-serif)
+}
+
+.trust-item span {
+    font-size: 0.75rem;
+    color: var(--muted)
+}
+
+.hero-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem
+}
+
+.dr-avatar {
+    height: 280px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(14, 165, 233, 0.2)
+}
+
+.avatar-icon {
+    font-size: 6rem
+}
+
+.dr-info-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--border)
+}
+
+.dr-info-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.4rem
+}
+
+.dr-info-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.3rem
+}
+
+.dr-specialties {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1rem
+}
+
+.dr-specialties span {
+    font-size: 0.8rem;
+    color: var(--blue);
+    font-weight: 600
+}
+
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 3rem
+}
+
+.section-inner h2,
+.section-inner h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2.5rem
+}
+
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem
+}
+
+.spec-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s, transform 0.3s
+}
+
+.spec-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px)
+}
+
+.spec-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem
+}
+
+.spec-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem
+}
+
+.spec-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7
+}
+
+.research-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    margin-bottom: 4rem
+}
+
+.res-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border)
+}
+
+.res-year {
+    font-weight: 700;
+    color: var(--blue);
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    width: 60px;
+    flex-shrink: 0
+}
+
+.res-item h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.3rem
+}
+
+.res-item p {
+    font-size: 0.8rem;
+    color: var(--muted)
+}
+
+.res-impact {
+    background: #dbeafe;
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    margin-left: auto
+}
+
+.credentials h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem
+}
+
+.cred-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border)
+}
+
+.cred-item {
+    display: flex;
+    gap: 2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border)
+}
+
+.cred-year {
+    font-size: 0.8rem;
+    color: var(--blue);
+    font-weight: 600;
+    width: 100px;
+    flex-shrink: 0;
+    padding-top: 0.2rem
+}
+
+.cred-item strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 0.2rem
+}
+
+.cred-item p {
+    font-size: 0.8rem;
+    color: var(--muted)
+}
+
+.appointments {
+    background: #fff;
+    padding: 6rem 3rem
+}
+
+.appt-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center
+}
+
+.appt-inner h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem
+}
+
+.appt-inner>p {
+    color: var(--muted);
+    margin-bottom: 3rem
+}
+
+.appt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: left
+}
+
+.appt-option {
+    padding: 2rem;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    transition: border-color 0.3s
+}
+
+.appt-option.highlighted {
+    border-color: var(--blue);
+    background: #f0f9ff
+}
+
+.appt-option h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.8rem
+}
+
+.appt-option p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem
+}
+
+.appt-btn {
+    display: inline-block;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    padding: 0.6rem 1.3rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.2s
+}
+
+.appt-btn:hover,
+.appt-btn.primary {
+    background: var(--blue);
+    color: #fff
+}
+
+.footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 0.8rem
+}

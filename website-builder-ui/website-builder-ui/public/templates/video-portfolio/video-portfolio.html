@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion & Video Portfolio</title>
+    <!-- Modern Bold Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Manrope:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="video-portfolio.css">
+</head>
+
+<body class="dark-fluid">
+    <!-- Animated Gradient Mesh Background -->
+    <div class="mesh-bg">
+        <div class="color-mesh purple"></div>
+        <div class="color-mesh pink"></div>
+        <div class="color-mesh orange"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Interface Content -->
+    <div class="ui-layer">
+
+        <!-- Header -->
+        <header class="glass-header">
+            <div class="logo">MOTION.<span class="outline">VFX</span></div>
+            <nav class="nav-links">
+                <a href="#reel">Showreel</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="btn-primary" onclick="location.href='mailto:hello@motion.vfx'">Hire Me</button>
+        </header>
+
+        <!-- Main Hero -->
+        <main class="hero-container">
+            <h1 class="hero-title reveal-text">
+                <div class="line"><span>Cinematic</span></div>
+                <div class="line outline-text"><span>Storytelling.</span></div>
+            </h1>
+
+            <div class="hero-sub reveal-fade delay-1">
+                <p>Digital artist & motion director specializing in high-end commercial VFX and immersive 3D
+                    environments.</p>
+                <a href="#reel" class="scroll-down">
+                    <span>Play Showreel</span>
+                    <div class="arrow-down">↓</div>
+                </a>
+            </div>
+        </main>
+
+        <!-- Showreel Section -->
+        <section id="reel" class="section-padding">
+            <div class="reel-container reveal-scale">
+                <div class="video-placeholder">
+                    <!-- Faked video player for template -->
+                    <div class="play-btn">
+                        <div class="triangle"></div>
+                    </div>
+                </div>
+                <div class="reel-caption">
+                    <h2>2026 Director's Cut</h2>
+                    <p>A compilation of my best commercial and automotive CGI work.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Grid -->
+        <section id="projects" class="section-padding">
+            <div class="section-header">
+                <h2 class="reveal-text">
+                    <div class="line"><span>Featured</span></div>
+                </h2>
+                <h2 class="reveal-text outline-text">
+                    <div class="line"><span>Projects.</span></div>
+                </h2>
+            </div>
+
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <article class="project-card reveal-up">
+                    <div class="card-image hue-1"></div>
+                    <div class="card-content glass-panel">
+                        <div class="tag">Automotive</div>
+                        <h3>Neon Rush - Porsche</h3>
+                        <a href="#" class="view-link">View Details &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card reveal-up delay-1">
+                    <div class="card-image hue-2"></div>
+                    <div class="card-content glass-panel">
+                        <div class="tag">VFX</div>
+                        <h3>Sci-Fi Short: The Void</h3>
+                        <a href="#" class="view-link">View Details &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card reveal-up">
+                    <div class="card-image hue-3"></div>
+                    <div class="card-content glass-panel">
+                        <div class="tag">Commercial</div>
+                        <h3>Nike Air Max Air</h3>
+                        <a href="#" class="view-link">View Details &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card reveal-up delay-1">
+                    <div class="card-image hue-4"></div>
+                    <div class="card-content glass-panel">
+                        <div class="tag">Music Video</div>
+                        <h3>Echoes - Synthwave</h3>
+                        <a href="#" class="view-link">View Details &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact" class="glass-footer">
+            <div class="footer-content reveal-up">
+                <h2>Ready to collaborate?</h2>
+                <a href="mailto:hello@motion.vfx" class="big-link">Let's Talk.</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Motion VFX. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="#">Vimeo</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Local JS -->
+    <script src="video-portfolio.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. James Chen – Data Scientist & ML Engineer</title>
+    <meta name="description" content="Data scientist specializing in ML, NLP, and scalable data pipelines.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="portfolio-data-scientist.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <a href="#" class="logo">JC<span class="logo-dot">.</span>data</a>
+        <nav class="nav">
+            <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Research</a><a
+                href="#pubs">Publications</a>
+            <a href="#contact" class="btn-hire">Open to Work</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-role">📊 Data Scientist · ML Engineer · PhD</div>
+            <h1>Turning <span>Data</span><br>into <span>Decisions</span></h1>
+            <p>7 years in machine learning, NLP, and large-scale data systems. I've shipped models used by millions and
+                published research in ICML and NeurIPS.</p>
+            <div class="hero-cta"><a href="#projects" class="btn-primary">View Research</a><a href="#contact"
+                    class="btn-outline">Download CV</a></div>
+            <div class="hero-stats">
+                <div class="stat"><strong>7+</strong><span>years</span></div>
+                <div class="stat"><strong>12</strong><span>papers</span></div>
+                <div class="stat"><strong>40K+</strong><span>GitHub stars</span></div>
+                <div class="stat"><strong>2</strong><span>PhD patents</span></div>
+            </div>
+        </div>
+        <div class="hero-chart">
+            <canvas id="chartCanvas" width="460" height="360"></canvas>
+        </div>
+    </section>
+    <section class="skills" id="skills">
+        <div class="section-inner">
+            <h2>Technical Arsenal</h2>
+            <div class="skill-tags">
+                <span class="tag core">Python</span><span class="tag core">PyTorch</span><span
+                    class="tag core">TensorFlow</span><span class="tag core">Scikit-learn</span>
+                <span class="tag ml">BERT / GPT</span><span class="tag ml">LangChain</span><span class="tag ml">Hugging
+                    Face</span><span class="tag ml">Reinforcement Learning</span>
+                <span class="tag data">Spark</span><span class="tag data">Airflow</span><span
+                    class="tag data">dbt</span><span class="tag data">Kafka</span><span
+                    class="tag data">Snowflake</span>
+                <span class="tag infra">MLflow</span><span class="tag infra">Kubernetes</span><span
+                    class="tag infra">AWS SageMaker</span><span class="tag infra">GCP Vertex AI</span>
+            </div>
+        </div>
+    </section>
+    <section class="projects" id="projects">
+        <div class="section-inner">
+            <h2>ML Projects & Research</h2>
+            <div class="proj-grid">
+                <div class="proj-card highlight">
+                    <div class="proj-top"><span class="proj-badge featured">🏆 Featured</span><span
+                            class="proj-badge">NLP</span><span class="proj-badge">Transformers</span></div>
+                    <h3>ContextLens – Long-Document NLP</h3>
+                    <p>A novel attention mechanism for 200K+ token context windows. 40K GitHub stars. Published in ICML
+                        2024.</p>
+                    <div class="proj-metrics"><span>📄 ICML 2024</span><span>⭐ 40K stars</span><span>🔁 2.1K
+                            forks</span></div>
+                    <a href="#" class="proj-link">Read Paper →</a>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-top"><span class="proj-badge">Computer Vision</span></div>
+                    <h3>MedScan-AI</h3>
+                    <p>Radiology image classifier with 97.2% accuracy. Deployed to 8 hospitals. NIH-funded.</p>
+                    <a href="#" class="proj-link">View Project →</a>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-top"><span class="proj-badge">Recommendation</span></div>
+                    <h3>RecSys at Scale</h3>
+                    <p>Personalization engine serving 50M daily recommendations for a top streaming platform.</p>
+                    <a href="#" class="proj-link">View Project →</a>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-top"><span class="proj-badge">Time Series</span></div>
+                    <h3>DemandForge</h3>
+                    <p>LSTM-based demand forecasting reducing inventory costs by 28% for e-commerce supply chain.</p>
+                    <a href="#" class="proj-link">GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pubs" id="pubs">
+        <div class="section-inner">
+            <h2>Publications</h2>
+            <div class="pub-list">
+                <div class="pub-item"><span class="pub-year">2024</span>
+                    <div>
+                        <h3>ContextLens: Efficient Attention for Long Documents</h3>
+                        <p>ICML 2024 · Chen, J., Patel, A., Williams, R. et al.</p>
+                    </div><a href="#" class="pub-pdf">PDF →</a>
+                </div>
+                <div class="pub-item"><span class="pub-year">2023</span>
+                    <div>
+                        <h3>Sparse Transformers for Medical Imaging</h3>
+                        <p>NeurIPS 2023 · Chen, J., Singh, K.</p>
+                    </div><a href="#" class="pub-pdf">PDF →</a>
+                </div>
+                <div class="pub-item"><span class="pub-year">2022</span>
+                    <div>
+                        <h3>Federated Learning for Healthcare Privacy</h3>
+                        <p>AAAI 2022 · Chen, J., Kowalski, M., Lee, H.</p>
+                    </div><a href="#" class="pub-pdf">PDF →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="contact-box">
+            <h2>Let's Collaborate</h2>
+            <p>Open to research partnerships, ML consulting, and senior IC roles. Not considering management tracks.</p>
+            <div class="c-links"><a href="mailto:james@example.com" class="c-btn">✉️ Email</a><a href="#"
+                    class="c-btn">🐙 GitHub</a><a href="#" class="c-btn">📄 Google Scholar</a><a href="#"
+                    class="c-btn">💼 LinkedIn</a></div>
+        </div>
+    </section>
+    <footer class="footer"><span class="logo">JC<span class="logo-dot">.</span>data</span>
+        <p>© 2026 James Chen · PhD, Stanford · All research opinions my own.</p>
+    </footer>
+    <script src="portfolio-data-scientist.js"></script>
+</body>
+
+</html>

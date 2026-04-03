@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIOM FILMS – Story Is Everything</title>
+    <meta name="description"
+        content="Award-winning film production studio crafting cinematic narratives for screens of every size.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="film-studio.css">
+</head>
+
+<body>
+    <div class="film-grain"></div>
+
+    <header class="header">
+        <a href="#" class="logo">AXIOM<span>FILMS</span></a>
+        <nav class="nav">
+            <a href="#films">Films</a>
+            <a href="#directors">Directors</a>
+            <a href="#awards">Awards</a>
+            <a href="#contact" class="btn-contact">Pitch a Project</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-reel">
+            <div class="reel-slide active" style="background:linear-gradient(160deg,#0a0a0a 40%,#1a0a2e)">
+                <div class="reel-overlay"></div>
+                <div class="reel-content">
+                    <span class="reel-label">Now in Production</span>
+                    <h1>THE LAST<br>MERIDIAN</h1>
+                    <p>A cinematic meditation on time, memory, and the coast of Portugal.</p>
+                    <a href="#" class="reel-btn">▶ Watch Teaser</a>
+                </div>
+            </div>
+        </div>
+        <div class="reel-controls">
+            <div class="reel-dot active"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+        </div>
+    </section>
+
+    <section class="films" id="films">
+        <div class="films-header">
+            <h2>Our Films</h2>
+            <div class="filter-tabs">
+                <button class="tab active" data-filter="all">All</button>
+                <button class="tab" data-filter="feature">Feature</button>
+                <button class="tab" data-filter="short">Short</button>
+                <button class="tab" data-filter="documentary">Documentary</button>
+            </div>
+        </div>
+        <div class="films-grid">
+            <div class="film-card" data-type="feature">
+                <div class="film-poster" style="background:linear-gradient(160deg,#1a0a0a,#4a1010)"></div>
+                <div class="film-info">
+                    <h3>CRIMSON ATLAS</h3>
+                    <span>Feature · 2025 · Cannes Palme d'Or</span>
+                </div>
+            </div>
+            <div class="film-card" data-type="short">
+                <div class="film-poster" style="background:linear-gradient(160deg,#0a0a1a,#10104a)"></div>
+                <div class="film-info">
+                    <h3>STATIC</h3>
+                    <span>Short · 2024 · Sundance Grand Jury</span>
+                </div>
+            </div>
+            <div class="film-card" data-type="documentary">
+                <div class="film-poster" style="background:linear-gradient(160deg,#0a1a0a,#104a10)"></div>
+                <div class="film-info">
+                    <h3>WHAT REMAINS</h3>
+                    <span>Documentary · 2024 · TIFF Docs</span>
+                </div>
+            </div>
+            <div class="film-card" data-type="feature">
+                <div class="film-poster" style="background:linear-gradient(160deg,#1a1a0a,#4a4a10)"></div>
+                <div class="film-info">
+                    <h3>SOLSTICE</h3>
+                    <span>Feature · 2023 · Berlin Silver Bear</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="awards" id="awards">
+        <h2>Accolades</h2>
+        <div class="awards-bar">
+            <div class="award">🏆 Cannes Palme d'Or 2025</div>
+            <div class="award">🎬 Sundance Grand Jury 2024</div>
+            <div class="award">🌟 TIFF People's Choice 2024</div>
+            <div class="award">🦁 Venice Golden Lion 2023</div>
+            <div class="award">🐻 Berlin Silver Bear 2023</div>
+        </div>
+    </section>
+
+    <section class="contact-cta" id="contact">
+        <div class="cta-inner">
+            <h2>Have a Story to Tell?</h2>
+            <p>We partner with visionary directors and writers to bring bold cinematic ideas to life. Let's talk.</p>
+            <a href="mailto:projects@axiomfilms.com" class="cta-btn">Pitch Your Project</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="logo">AXIOM<span>FILMS</span></span>
+            <p>© 2026 Axiom Films Ltd. Crafting stories since 2010.</p>
+        </div>
+    </footer>
+
+    <script src="film-studio.js"></script>
+</body>
+
+</html>

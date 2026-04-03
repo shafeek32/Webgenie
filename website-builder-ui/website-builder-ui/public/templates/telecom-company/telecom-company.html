@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveNet Telecom – Connect Everything. Everywhere.</title>
+    <meta name="description" content="Next-generation 5G, fiber broadband, enterprise networking, and IoT connectivity solutions for individuals and businesses.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="telecom-company.css">
+</head>
+<body>
+    <canvas id="signalCanvas"></canvas>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="signal-icon">
+                    <div class="sig sig1"></div>
+                    <div class="sig sig2"></div>
+                    <div class="sig sig3"></div>
+                </div>
+                WaveNet
+            </a>
+            <nav class="nav">
+                <a href="#plans">Plans</a>
+                <a href="#network">Network</a>
+                <a href="#business">Business</a>
+                <a href="#devices">Devices</a>
+                <a href="#" class="btn-login">My Account</a>
+                <a href="#plans" class="btn-nav">Get Connected</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="live-dot"></span> 5G Now Live in 400+ Cities</div>
+            <h1>The Future of<br><span class="grad-text">Connectivity</span><br>Is Here</h1>
+            <p>Experience lightning-fast 5G speeds, wall-to-wall home fiber, and enterprise-grade networking that keeps you ahead.</p>
+            <div class="speed-display">
+                <div class="speed-gauge">
+                    <div class="gauge-value" id="speedVal">0</div>
+                    <div class="gauge-unit">Mbps</div>
+                    <canvas id="gaugeCanvas" width="200" height="120"></canvas>
+                </div>
+                <div class="speed-info">
+                    <div class="si-item"><span class="si-icon">📶</span><div><strong>5G Ultra</strong><p>Up to 10 Gbps peak</p></div></div>
+                    <div class="si-item"><span class="si-icon">🌐</span><div><strong>Fiber Home</strong><p>Up to 2 Gbps symmetrical</p></div></div>
+                    <div class="si-item"><span class="si-icon">🔋</span><div><strong>99.99% Uptime</strong><p>Carrier-grade reliability</p></div></div>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="#plans" class="btn-primary">View All Plans</a>
+                <a href="#network" class="btn-ghost">Check Coverage</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="plans" id="plans">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Plans</span>
+                <h2>Choose Your <em>Connection</em></h2>
+                <div class="plan-toggle">
+                    <button class="toggle-btn active" data-type="personal">Personal</button>
+                    <button class="toggle-btn" data-type="business">Business</button>
+                </div>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-name">Starter</div>
+                    <div class="plan-speed">100 Mbps</div>
+                    <div class="plan-price">$29<span>/mo</span></div>
+                    <ul class="plan-features">
+                        <li>✓ 100 GB Data</li>
+                        <li>✓ Free Router</li>
+                        <li>✓ Standard Support</li>
+                        <li>✗ 5G Access</li>
+                        <li>✗ TV Bundle</li>
+                    </ul>
+                    <a href="#" class="plan-btn">Choose Starter</a>
+                </div>
+                <div class="plan-card popular">
+                    <div class="popular-tag">🔥 Best Value</div>
+                    <div class="plan-name">Ultra 5G</div>
+                    <div class="plan-speed">1 Gbps</div>
+                    <div class="plan-price">$59<span>/mo</span></div>
+                    <ul class="plan-features">
+                        <li>✓ Unlimited Data</li>
+                        <li>✓ Wi-Fi 6 Router</li>
+                        <li>✓ 5G Access</li>
+                        <li>✓ Priority Support</li>
+                        <li>✓ 3 Months Free TV</li>
+                    </ul>
+                    <a href="#" class="plan-btn primary">Choose Ultra 5G</a>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-name">Hyper Fiber</div>
+                    <div class="plan-speed">2 Gbps</div>
+                    <div class="plan-price">$99<span>/mo</span></div>
+                    <ul class="plan-features">
+                        <li>✓ Unlimited Data</li>
+                        <li>✓ Wi-Fi 7 Mesh System</li>
+                        <li>✓ 5G + Fiber</li>
+                        <li>✓ 24/7 VIP Support</li>
+                        <li>✓ Full TV Bundle</li>
+                    </ul>
+                    <a href="#" class="plan-btn">Choose Hyper</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="network-section" id="network">
+        <div class="container">
+            <div class="network-inner">
+                <div class="network-text">
+                    <span class="section-tag">Our Network</span>
+                    <h2>The Most Advanced<br><em>Network in America</em></h2>
+                    <p>98.6% population coverage. 400+ 5G cities. Fiber to 28 million homes. The most reliable network, proven year after year.</p>
+                    <div class="network-stats">
+                        <div class="ns-item"><div class="ns-num" data-target="98">0</div><span>%</span><div class="ns-lbl">Population Coverage</div></div>
+                        <div class="ns-item"><div class="ns-num" data-target="400">0</div><span>+</span><div class="ns-lbl">5G Cities</div></div>
+                        <div class="ns-item"><div class="ns-num" data-target="28">0</div><span>M+</span><div class="ns-lbl">Fiber Homes</div></div>
+                    </div>
+                    <div class="coverage-check">
+                        <input type="text" placeholder="Enter your ZIP code to check coverage">
+                        <button class="btn-primary">Check Coverage</button>
+                    </div>
+                </div>
+                <div class="network-map">
+                    <div class="map-placeholder">
+                        <div class="map-grid"></div>
+                        <div class="signal-point" style="top:30%;left:40%"><div class="signal-ring"></div></div>
+                        <div class="signal-point" style="top:50%;left:60%"><div class="signal-ring"></div></div>
+                        <div class="signal-point" style="top:65%;left:30%"><div class="signal-ring"></div></div>
+                        <div class="signal-point" style="top:20%;left:70%"><div class="signal-ring"></div></div>
+                        <div class="map-label">Coverage Map</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="business-section" id="business">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">For Business</span>
+                <h2>Enterprise <em>Connectivity Solutions</em></h2>
+            </div>
+            <div class="biz-grid">
+                <div class="biz-card"><div class="biz-icon">🏢</div><h3>SD-WAN</h3><p>Software-defined networking connecting all your locations with automated failover and QoS.</p></div>
+                <div class="biz-card"><div class="biz-icon">🌐</div><h3>Private 5G</h3><p>Dedicated 5G networks for factories, warehouses, and campuses with ultra-low latency.</p></div>
+                <div class="biz-card"><div class="biz-icon">🔒</div><h3>Secure Access</h3><p>Zero-trust SASE architecture with integrated cybersecurity and cloud access.</p></div>
+                <div class="biz-card"><div class="biz-icon">📡</div><h3>IoT Connectivity</h3><p>Massive IoT device management, eSIM provisioning, and real-time device telemetry.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="#" class="logo"><span>Wave</span>Net</a><p>Connecting people and businesses to what matters most.</p></div>
+                <div class="footer-col"><h4>Personal</h4><a href="#">Mobile Plans</a><a href="#">Home Internet</a><a href="#">TV</a><a href="#">Devices</a></div>
+                <div class="footer-col"><h4>Business</h4><a href="#">SD-WAN</a><a href="#">Private 5G</a><a href="#">IoT</a><a href="#">Enterprise</a></div>
+                <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Newsroom</a><a href="#">Investors</a><a href="#">Careers</a></div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 WaveNet Telecommunications Corp. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="telecom-company.js"></script>
+</body>
+</html>

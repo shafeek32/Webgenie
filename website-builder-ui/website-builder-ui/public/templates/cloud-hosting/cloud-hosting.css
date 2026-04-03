@@ -1,0 +1,423 @@
+/* cloud-hosting.css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+:root {
+    --bg: #050a14;
+    --blue: #2563eb;
+    --blue2: #38bdf8;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --surface: #0f172a;
+    --border: #1e293b;
+    --font: 'Plus Jakarta Sans', sans-serif
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    overflow-x: hidden
+}
+
+.cloud-particles {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(5, 10, 20, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border)
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text)
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s
+}
+
+.nav a:hover {
+    color: var(--blue2)
+}
+
+.btn-start {
+    background: var(--blue);
+    color: #fff !important;
+    padding: 0.55rem 1.3rem;
+    border-radius: 8px;
+    font-weight: 700
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    min-height: 100vh;
+    padding: 9rem 3rem 4rem
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem
+}
+
+.hero-badge {
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    width: fit-content
+}
+
+.hero-badge .green {
+    color: #22c55e
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em
+}
+
+.hero-content h1 span {
+    background: linear-gradient(135deg, var(--blue), var(--blue2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text
+}
+
+.hero-content p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 480px
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background 0.2s
+}
+
+.btn-primary:hover {
+    background: #1d4ed8
+}
+
+.btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s
+}
+
+.btn-ghost:hover {
+    border-color: var(--blue2);
+    color: var(--text)
+}
+
+.trust-logos {
+    font-size: 0.8rem;
+    color: var(--muted)
+}
+
+.server-rack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 60px rgba(37, 99, 235, 0.1)
+}
+
+.server-unit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    animation: server-pulse 2s ease-in-out infinite
+}
+
+@keyframes server-pulse {
+
+    0%,
+    100% {
+        border-color: var(--border)
+    }
+
+    50% {
+        border-color: rgba(56, 189, 248, 0.3)
+    }
+}
+
+.server-lights {
+    display: flex;
+    gap: 0.4rem
+}
+
+.sl {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: blink-light 1.5s step-end infinite
+}
+
+.sl.green {
+    background: #22c55e;
+    animation-delay: var(--d, 0s)
+}
+
+.sl.yellow {
+    background: #eab308
+}
+
+@keyframes blink-light {
+
+    0%,
+    90% {
+        opacity: 1
+    }
+
+    91%,
+    100% {
+        opacity: 0.3
+    }
+}
+
+.server-bar {
+    flex: 1;
+    height: 6px;
+    background: linear-gradient(90deg, var(--blue), var(--blue2));
+    border-radius: 3px;
+    animation: load-bar 3s ease-in-out infinite
+}
+
+@keyframes load-bar {
+
+    0%,
+    100% {
+        opacity: 0.4
+    }
+
+    50% {
+        opacity: 1
+    }
+}
+
+.features,
+.pricing {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 3rem
+}
+
+.features h2,
+.pricing h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em
+}
+
+.feat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem
+}
+
+.feat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 14px;
+    transition: border-color 0.3s
+}
+
+.feat:hover {
+    border-color: var(--blue)
+}
+
+.feat>*:first-child {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block
+}
+
+.feat h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem
+}
+
+.feat p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto
+}
+
+.price-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.3s
+}
+
+.price-card.featured {
+    border-color: var(--blue)
+}
+
+.pop {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blue);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 0.25rem 1rem;
+    border-radius: 100px;
+    font-weight: 700;
+    white-space: nowrap
+}
+
+.price-card h3 {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-weight: 500
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem
+}
+
+.price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--muted)
+}
+
+.price-card ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem
+}
+
+.price-card ul li {
+    font-size: 0.875rem;
+    color: var(--muted)
+}
+
+.price-btn {
+    display: block;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.7rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s
+}
+
+.price-btn.primary {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff
+}
+
+.price-btn:hover {
+    border-color: var(--blue)
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    padding: 2.5rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 0.85rem
+}

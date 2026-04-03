@@ -1,0 +1,337 @@
+/* real-estate-luxury.css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+:root {
+    --bg: #0a0a0f;
+    --gold: #c9a96e;
+    --cream: #f5f0e8;
+    --text: #e8e4dc;
+    --muted: #6a6a7a;
+    --font-display: 'Tenor Sans', sans-serif;
+    --font-body: 'Raleway', sans-serif
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: rgba(10, 10, 15, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.1)
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    color: var(--text)
+}
+
+.logo span {
+    color: var(--gold)
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s
+}
+
+.nav a:hover {
+    color: var(--gold)
+}
+
+.btn-appt {
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 0.5rem 1.2rem
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem;
+    overflow: hidden
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #0a0a0f 40%, #1a1a2e 70%, #0a0f1a)
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a96e' fill-opacity='0.02'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem
+}
+
+.hero-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold)
+}
+
+.hero-content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 400
+}
+
+.hero-content h1 em {
+    font-style: italic;
+    color: var(--gold)
+}
+
+.hero-content p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 440px;
+    line-height: 1.9
+}
+
+.search-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    max-width: 700px
+}
+
+.search-widget select,
+.search-widget input {
+    padding: 1rem 1.2rem;
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba(201, 169, 110, 0.15);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    outline: none;
+    appearance: none
+}
+
+.search-widget select option {
+    background: var(--bg)
+}
+
+.search-widget button {
+    padding: 1rem 2rem;
+    background: var(--gold);
+    color: var(--bg);
+    border: none;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap
+}
+
+.search-widget button:hover {
+    opacity: 0.85
+}
+
+.listings {
+    padding: 6rem 4rem
+}
+
+.listings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem
+}
+
+.listings-header h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--cream)
+}
+
+.view-all {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em
+}
+
+.listings-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 1.5rem
+}
+
+.listing-card {
+    transition: transform 0.3s
+}
+
+.listing-card:hover {
+    transform: translateY(-4px)
+}
+
+.listing-card.featured .listing-img {
+    height: 350px
+}
+
+.listing-img {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem
+}
+
+.listing-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase
+}
+
+.listing-info {
+    padding: 0 0.5rem
+}
+
+.listing-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem
+}
+
+.listing-info p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem
+}
+
+.listing-price {
+    font-size: 1rem;
+    color: var(--gold);
+    font-weight: 500
+}
+
+.agents {
+    padding: 6rem 4rem;
+    background: #0f0f14
+}
+
+.agents h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    text-align: center;
+    color: var(--cream);
+    margin-bottom: 3rem
+}
+
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto
+}
+
+.agent-card {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid rgba(201, 169, 110, 0.1);
+    border-radius: 4px;
+    transition: border-color 0.3s
+}
+
+.agent-card:hover {
+    border-color: var(--gold)
+}
+
+.agent-img {
+    height: 180px;
+    border-radius: 2px;
+    margin-bottom: 1.2rem
+}
+
+.agent-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem
+}
+
+.agent-card span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem
+}
+
+.agent-card p {
+    font-size: 0.8rem;
+    color: var(--muted)
+}
+
+.footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 0.8rem
+}

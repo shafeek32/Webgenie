@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevProfile | <Terminal>
+    </title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;600;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="developer-portfolio.css">
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <div class="grid-overlay"></div>
+
+    <main class="container">
+        <!-- Terminal Header -->
+        <header class="hacker-nav bento-card">
+            <div class="mac-controls">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-brand">
+                <span class="cmd-prompt">~</span> ./alex_dev<span class="cursor-blink">_</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#about" data-text="about">about</a>
+                <a href="#projects" data-text="projects">projects</a>
+                <a href="#contact" data-text="contact">contact</a>
+            </nav>
+        </header>
+
+        <!-- Bento Layout -->
+        <div class="bento-grid">
+            <!-- Hero Section -->
+            <section class="bento-hero bento-card span-2 glow-border">
+                <div class="hero-content">
+                    <p class="mono-sub">// Full Stack Engineer</p>
+                    <h1 class="glitch-text" data-text="ALEXANDER">ALEXANDER</h1>
+                    <h1 class="gradient-text">CHEN</h1>
+                    <p class="hero-desc">Building scalable architectures and terminal-ready interfaces. Fluent in
+                        TypeScript, Rust, and the art of problem solving.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary"><span class="cmd-prompt">></span> init_contact()</button>
+                        <button class="btn btn-ghost">view_resume.pdf</button>
+                    </div>
+                </div>
+                <div class="code-decoration">
+                    <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
+  <span class="property">name</span>: <span class="string">'Alex Chen'</span>,
+  <span class="property">skills</span>: [<span class="string">'React'</span>, <span class="string">'Node'</span>, <span class="string">'System Architecture'</span>],
+  <span class="property">status</span>: <span class="string">'Open to Work'</span>
+};
+<span class="keyword">await</span> <span class="function">developer</span>.<span class="property">buildFuture</span>();</code></pre>
+                </div>
+            </section>
+
+            <!-- Stats/Metrics -->
+            <section class="bento-card bento-stat flex-center">
+                <div class="stat-content">
+                    <h2>05+</h2>
+                    <p>Years Configured</p>
+                </div>
+            </section>
+
+            <section class="bento-card bento-stat flex-center accent-card">
+                <div class="stat-content">
+                    <h2>42</h2>
+                    <p>Repos Deployed</p>
+                </div>
+            </section>
+
+            <!-- Tech Stack Matrix -->
+            <section class="bento-card bento-stack span-2">
+                <div class="card-header">
+                    <h3><span class="mono-prefix">$</span> cat tech_stack.json</h3>
+                </div>
+                <div class="stack-grid">
+                    <div class="stack-item hover-float">TypeScript</div>
+                    <div class="stack-item hover-float">React / Next.js</div>
+                    <div class="stack-item hover-float">Node.js</div>
+                    <div class="stack-item hover-float">Python</div>
+                    <div class="stack-item hover-float">Docker / K8s</div>
+                    <div class="stack-item hover-float">PostgreSQL</div>
+                    <div class="stack-item hover-float">AWS</div>
+                    <div class="stack-item hover-float">GraphQL</div>
+                </div>
+            </section>
+
+            <!-- Selected Projects -->
+            <section class="bento-card bento-projects span-full">
+                <div class="card-header">
+                    <h3><span class="mono-prefix">$</span> ls -la ./projects</h3>
+                </div>
+                <div class="project-list">
+                    <article class="project-row group">
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-tag">Open Source</span>
+                        </div>
+                        <div class="project-info">
+                            <h4>Nexus Engine</h4>
+                            <p>A high-performance Rust-based rendering engine for web applications.</p>
+                        </div>
+                        <div class="project-link">
+                            <span class="arrow-icon">↗</span>
+                        </div>
+                    </article>
+
+                    <article class="project-row group">
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-tag">Full Stack</span>
+                        </div>
+                        <div class="project-info">
+                            <h4>FinTech Dashboard</h4>
+                            <p>Real-time trading UI handling million-row datasets with zero lag.</p>
+                        </div>
+                        <div class="project-link">
+                            <span class="arrow-icon">↗</span>
+                        </div>
+                    </article>
+
+                    <article class="project-row group">
+                        <div class="project-meta">
+                            <span class="project-year">2023</span>
+                            <span class="project-tag">Architecture</span>
+                        </div>
+                        <div class="project-info">
+                            <h4>Distributed Auth Service</h4>
+                            <p>Zero-trust authentication microservice serving 50k requests/minute.</p>
+                        </div>
+                        <div class="project-link">
+                            <span class="arrow-icon">↗</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <footer class="terminal-footer">
+            <p><span class="mono-prefix">[root@portfolio]~#</span> <span class="typing-effect">shutdown -h now</span>
+            </p>
+            <p class="copyright">© 2026 Alexander Chen. Built with <span class="heart">♥</span> and caffeine.</p>
+        </footer>
+    </main>
+
+    <!-- Local JS -->
+    <script src="developer-portfolio.js"></script>
+</body>
+
+</html>

@@ -278,5 +278,235 @@
         "id": "sports",
         "name": "Sports & Athletics",
         "description": "High-energy site for sports teams, clubs, or individual athletes."
+    },
+    {
+        "id": "developer-portfolio",
+        "name": "Developer Portfolio",
+        "description": "Interactive, terminal-inspired dark-mode portfolio for developers."
+    },
+    {
+        "id": "designer-portfolio",
+        "name": "Designer Portfolio",
+        "description": "Premium, highly visual portfolio with elegant typography for designers."
+    },
+    {
+        "id": "video-portfolio",
+        "name": "Video & Animation Portfolio",
+        "description": "Dynamic, motion-focused portfolio for videographers and 3D artists."
+    },
+    {
+        "id": "fashion-magazine",
+        "name": "Fashion Magazine",
+        "description": "High-end editorial fashion magazine with custom cursor, animated ticker, and luxury typography."
+    },
+    {
+        "id": "nft-marketplace",
+        "name": "NFT Marketplace",
+        "description": "Futuristic NFT and digital collectibles marketplace with animated orbs, dark theme, and Web3 vibes."
+    },
+    {
+        "id": "ai-product",
+        "name": "AI Product or SaaS",
+        "description": "Cutting-edge AI/SaaS product landing page with neural network canvas, typewriter effect, and pricing table."
+    },
+    {
+        "id": "luxury-watches",
+        "name": "Luxury Watch Brand",
+        "description": "Elegant dark luxury watch brand site with live animated clock hands and gold accents."
+    },
+    {
+        "id": "food-delivery",
+        "name": "Food Delivery App",
+        "description": "Vibrant food delivery startup site with phone mockup, category grid, and animated search bar."
+    },
+    {
+        "id": "mental-health",
+        "name": "Mental Health & Wellness",
+        "description": "Calm, trust-inspiring therapy and mental wellness website with breathing animation and soft gradients."
+    },
+    {
+        "id": "film-studio",
+        "name": "Film & Cinema Studio",
+        "description": "Cinematic film production studio with film grain effect, dark hero reel, and award showcase."
+    },
+    {
+        "id": "florist",
+        "name": "Florist & Floral Design",
+        "description": "Romantic, nature-inspired florist website with floating petal animations and bespoke order form."
+    },
+    {
+        "id": "tattoo-studio",
+        "name": "Tattoo Studio",
+        "description": "Bold, edgy tattoo studio site with dark industrial aesthetic, artist profiles, and style showcase."
+    },
+    {
+        "id": "wine-cellar",
+        "name": "Wine & Fine Dining",
+        "description": "Sophisticated wine cellar and fine dining site with dark burgundy theme, wine bottle cards, and membership club."
+    },
+    {
+        "id": "esports-team",
+        "name": "Esports Team",
+        "description": "High-energy esports team site with neon glow, scanlines, glitch animation, and match schedule."
+    },
+    {
+        "id": "cybersecurity",
+        "name": "Cybersecurity & InfoSec",
+        "description": "Green-on-black matrix-themed cybersecurity firm site with live terminal typer and animated canvas."
+    },
+    {
+        "id": "travel-luxury",
+        "name": "Luxury Travel Agency",
+        "description": "Ultra-premium luxury travel site with cinematic hero, exclusive destination cards, and concierge services."
+    },
+    {
+        "id": "solar-energy",
+        "name": "Solar & Renewable Energy",
+        "description": "Bright, hopeful solar energy company site with animated sun canvas and interactive savings calculator."
+    },
+    {
+        "id": "digital-agency",
+        "name": "Digital Creative Agency",
+        "description": "Sleek black digital agency with custom cursor, rolling marquee, scroll-driven work grid, and counter animation."
+    },
+    {
+        "id": "kids-education",
+        "name": "Kids Education Platform",
+        "description": "Fun, colorful kids learning platform with bouncing mascot, bubble animations, and subject cards."
+    },
+    {
+        "id": "real-estate-luxury",
+        "name": "Luxury Real Estate",
+        "description": "Prestigious real estate agency with dark gold-accented theme, property search widget, and agent profiles."
+    },
+    {
+        "id": "book-author",
+        "name": "Book Author or Writer",
+        "description": "Elegant author website with animated book cover, event listings, and literary typography."
+    },
+    {
+        "id": "cloud-hosting",
+        "name": "Cloud Hosting or DevOps",
+        "description": "Enterprise cloud hosting site with animated server rack, particle field, feature grid, and pricing table."
+    },
+    {
+        "id": "art-gallery",
+        "name": "Art Gallery or Museum",
+        "description": "Minimalist contemporary art gallery with noise texture, full-bleed artworks, and exhibition calendar."
+    },
+    {
+        "id": "portfolio-software-engineer",
+        "name": "Software Engineer Portfolio",
+        "description": "Dark-themed developer portfolio with falling code canvas, typewriter effect, skill bars, project grid, and career timeline."
+    },
+    {
+        "id": "portfolio-designer",
+        "name": "UI/UX Designer Portfolio",
+        "description": "Colorful designer portfolio with animated blob background, floating skill chips, case study grid, and custom cursor."
+    },
+    {
+        "id": "portfolio-data-scientist",
+        "name": "Data Scientist / ML Engineer Portfolio",
+        "description": "Analytical dark portfolio with animated bar chart canvas, skill tag matrix, publication list, and project cards."
+    },
+    {
+        "id": "portfolio-doctor",
+        "name": "Doctor / Medical Professional Portfolio",
+        "description": "Clean, trustworthy medical professional profile with specializations, research publications, credentials, and appointment booking."
+    },
+    {
+        "id": "portfolio-teacher",
+        "name": "Teacher / Educator Portfolio",
+        "description": "Warm education-themed portfolio with animated chalkboard, course listings, achievement showcase, and contact section."
+    },
+    {
+        "id": "portfolio-architect",
+        "name": "Architect Portfolio",
+        "description": "Minimalist architecture portfolio with animated blueprint canvas, full-bleed project gallery, and design philosophy section."
+    },
+    {
+        "id": "portfolio-marketer",
+        "name": "Marketer / Brand Strategist Portfolio",
+        "description": "Bold, high-energy marketing portfolio with animated revenue counter, case study results, and rolling services list."
+    },
+    {
+        "id": "portfolio-finance",
+        "name": "Finance / Investment Analyst Portfolio",
+        "description": "Dark terminal-style finance portfolio with animated sparkline chart, performance track record table, and publication library."
+    },
+    {
+        "id": "portfolio-photographer",
+        "name": "Photographer Portfolio",
+        "description": "Dark, full-bleed editorial photography portfolio with masonry gallery, parallax effects, and press publication logos."
+    },
+    {
+        "id": "portfolio-lawyer",
+        "name": "Lawyer / Barrister Portfolio",
+        "description": "Authoritative legal professional portfolio with animated scales of justice, notable cases table, credentials, and consultation booking."
+    },
+    {
+        "id": "resume",
+        "name": "Professional Resume",
+        "description": "Elegant printable resume with sidebar layout, skill bars, experience timeline, dark mode toggle, and download-as-HTML feature."
+    },
+    {
+        "id": "it-company",
+        "name": "IT Company",
+        "description": "Professional IT services, software consulting, and technology solutions."
+    },
+    {
+        "id": "software-development",
+        "name": "Software Development Agency",
+        "description": "Agency focused on custom software development, web apps, and digital products."
+    },
+    {
+        "id": "manufacturing",
+        "name": "Manufacturing Company",
+        "description": "Industrial and manufacturing site showcasing capabilities, processes, and products."
+    },
+    {
+        "id": "pharmaceutical",
+        "name": "Pharmaceutical Company",
+        "description": "Healthcare and pharma site highlighting research, pipelines, and wellness."
+    },
+    {
+        "id": "bank-finance",
+        "name": "Bank & Finance",
+        "description": "Trustworthy financial institution site with services, rates, and secure portal."
+    },
+    {
+        "id": "university-college",
+        "name": "University & College",
+        "description": "Educational institution site with academic programs, campus life, and admissions."
+    },
+    {
+        "id": "retail-store",
+        "name": "Retail Store",
+        "description": "Physical and online retail brand site with lookbooks, collections, and store locations."
+    },
+    {
+        "id": "consulting-firm",
+        "name": "Consulting Firm",
+        "description": "Professional management consulting site with expertise areas and case studies."
+    },
+    {
+        "id": "telecom-company",
+        "name": "Telecom & Networking",
+        "description": "Telecommunications provider site with service plans, network coverage, and support."
+    },
+    {
+        "id": "media-production",
+        "name": "Media Production House",
+        "description": "Creative film, video, and media production studio with showreels."
+    },
+    {
+        "id": "personal-info",
+        "name": "Personal Bio & Info",
+        "description": "Personal website for showcasing biography, projects, skills, and contact info."
+    },
+    {
+        "id": "ecommerce-general",
+        "name": "General Mega-Store E-commerce",
+        "description": "Large scale e-commerce platform similar to Amazon or Flipkart with mega menus, deals of the day, and mixed product categories."
     }
 ]

@@ -51,6 +51,9 @@ export function WebsiteBuilder() {
   const [selectedElement, setSelectedElement] = useState<WebsiteElement | null>(null)
   const [generationState, setGenerationState] = useState<GenerationState>("idle")
   const [generatedHtml, setGeneratedHtml] = useState<string | null>(null)
+  const [generatedSchema, setGeneratedSchema] = useState<string | null>(null)
+  const [generatedApi, setGeneratedApi] = useState<string | null>(null)
+  const [currentCategoryId, setCurrentCategoryId] = useState<string | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [propertiesOpen, setPropertiesOpen] = useState(false)
   const [hasGenerated, setHasGenerated] = useState(false)
@@ -70,7 +73,11 @@ export function WebsiteBuilder() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: trimmed }),
+        body: JSON.stringify({ 
+          prompt: trimmed,
+          currentHtml: generatedHtml || undefined,
+          categoryId: currentCategoryId || undefined
+        }),
       })
 
       if (!res.ok) {
@@ -80,10 +87,19 @@ export function WebsiteBuilder() {
 
       const data = await res.json()
       const html = data?.code
-      if (!html) throw new Error("No code returned from generator")
+      const schema = data?.schema
+      const api = data?.api
 
-      // Set the generated HTML to be shown in an iframe preview
+      if (!html) throw new Error("No HTML code returned from generator")
+
+      // Set the generated files
       setGeneratedHtml(html)
+      setGeneratedSchema(schema || "// No schema generated")
+      setGeneratedApi(api || "// No API generated")
+      if (data?.categoryId) {
+        setCurrentCategoryId(data.categoryId)
+      }
+
       setElements([])
       setGenerationState("complete")
     } catch (err: any) {
@@ -107,29 +123,73 @@ export function WebsiteBuilder() {
     try {
       const zip = new JSZip()
 
-      // Add the main HTML file
-      zip.file("index.html", generatedHtml)
+      // 1. Frontend: Next.js Pages
+      zip.file("app/page.tsx", `export default function Page() {
+  return (
+    <div dangerouslySetInnerHTML={{ __html: \`${generatedHtml.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\` }} />
+  )
+}`)
+      zip.file("app/layout.tsx", `import "./globals.css";
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}`)
+      zip.file("app/globals.css", `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n`)
 
-      // Create a folder for assets
-      const assetsFolder = zip.folder("assets")
-
-      // Add a basic CSS file if needed
-      if (assetsFolder) {
-        assetsFolder.file("style.css", "/* Add your custom styles here */\nbody { font-family: Arial, sans-serif; }\n");
-
-        // Add a basic JS file if needed
-        assetsFolder.file("script.js", "// Add your custom JavaScript here\nconsole.log('Website loaded');\n");
+      // 2. Database Schema
+      if (generatedSchema && !generatedSchema.includes("No schema")) {
+        zip.folder("prisma")?.file("schema.prisma", generatedSchema)
       }
+
+      // 3. Backend API
+      if (generatedApi && !generatedApi.includes("No API")) {
+        zip.folder("app")?.folder("api")?.folder("data")?.file("route.ts", generatedApi)
+      }
+
+      // 4. Configs
+      zip.file("package.json", JSON.stringify({
+        name: "buildai-generated-app",
+        version: "0.1.0",
+        private: true,
+        scripts: {
+          "dev": "next dev",
+          "build": "next build",
+          "start": "next start",
+          "db:push": "prisma db push"
+        },
+        dependencies: {
+          "next": "14.2.5",
+          "react": "^18",
+          "react-dom": "^18",
+          "@prisma/client": "^5.17.0"
+        },
+        devDependencies: {
+          "prisma": "^5.17.0",
+          "typescript": "^5",
+          "tailwindcss": "^3.4.1",
+          "postcss": "^8"
+        }
+      }, null, 2))
+
+      zip.file("tailwind.config.ts", `import type { Config } from "tailwindcss";
+export default {
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  theme: { extend: {} },
+  plugins: [],
+} satisfies Config;`)
 
       // Generate the zip file
       const content = await zip.generateAsync({ type: "blob" })
 
       // Download the zip file
-      saveAs(content, "website.zip")
+      saveAs(content, "fullstack-project.zip")
 
       toast({
         title: "Download started",
-        description: "Your website is being downloaded as a zip file",
+        description: "Your full-stack project is being downloaded as a zip file",
       })
     } catch (err: any) {
       toast({
@@ -151,14 +211,21 @@ export function WebsiteBuilder() {
     }
   }
 
-  const handleAddElement = (type: string) => {
+  const handleAddElement = (type: string, index?: number) => {
     const newElement: WebsiteElement = {
       id: `${type}-${Date.now()}`,
       type,
       content: getDefaultContent(type),
       styles: getDefaultStyles(type),
     }
-    setElements((prev) => [...prev, newElement])
+    setElements((prev) => {
+      if (index !== undefined) {
+        const newEls = [...prev]
+        newEls.splice(index, 0, newElement)
+        return newEls
+      }
+      return [...prev, newElement]
+    })
   }
 
   const handleDeleteElement = (id: string) => {
@@ -179,10 +246,14 @@ export function WebsiteBuilder() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-background overflow-hidden">
-      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} hasGenerated={hasGenerated} onDownload={handleDownload} />
+    <div className="h-screen flex flex-col bg-background overflow-hidden relative">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="z-10 bg-background/50 backdrop-blur-xl border-b border-border/50">
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} hasGenerated={hasGenerated} onDownload={handleDownload} />
+      </div>
+
+      <div className="flex-1 flex overflow-hidden z-10 relative">
         {/* Components Sidebar */}
         <ComponentsSidebar open={sidebarOpen} onAddElement={handleAddElement} hasGenerated={hasGenerated} />
 
@@ -199,22 +270,29 @@ export function WebsiteBuilder() {
             <div className="flex-1 flex flex-col min-h-0">
               {/* Mini Prompt Bar - Centered Command Bar style */}
               <div className="flex justify-center p-4">
-                <div className="w-full max-w-2xl flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2 shadow-lg ring-1 ring-accent/5 focus-within:ring-2 focus-within:ring-accent/20 transition-all">
-                  <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+                <div className="w-full max-w-2xl flex items-center gap-2 bg-card/60 backdrop-blur-xl border border-border/50 rounded-full px-4 py-2 shadow-2xl ring-1 ring-white/5 focus-within:ring-2 focus-within:ring-accent/50 transition-all relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none" />
+                  <Sparkles className="w-4 h-4 text-accent animate-pulse relative z-10" />
                   <input
                     type="text"
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="Describe changes (e.g., 'change hero background to blue')..."
-                    className="flex-1 bg-transparent border-none py-1 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                    className="flex-1 bg-transparent border-none py-1 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none relative z-10"
                     onKeyDown={(e) => {
-                      if (e.key === "Enter") handleGenerate()
+                      if (e.key === "Enter") {
+                        handleGenerate()
+                        setPrompt("") // reset after submission
+                      }
                     }}
                   />
                   <button
-                    onClick={handleGenerate}
+                    onClick={() => {
+                      handleGenerate()
+                      setPrompt("") // reset after submission
+                    }}
                     disabled={generationState === "generating"}
-                    className="px-4 py-1.5 bg-accent text-accent-foreground rounded-full text-xs font-semibold hover:bg-accent/90 transition-colors disabled:opacity-50"
+                    className="px-4 py-1.5 bg-accent text-accent-foreground rounded-full text-xs font-semibold hover:bg-accent/90 transition-colors disabled:opacity-50 relative z-10"
                   >
                     {generationState === "generating" ? "Updating..." : "Update"}
                   </button>
@@ -228,9 +306,17 @@ export function WebsiteBuilder() {
                 onElementSelect={handleElementSelect}
                 onElementUpdate={handleElementUpdate}
                 onDeleteElement={handleDeleteElement}
+                onAddElement={handleAddElement}
                 onMoveElement={handleMoveElement}
                 generationState={generationState}
                 generatedHtml={generatedHtml}
+                generatedSchema={generatedSchema}
+                generatedApi={generatedApi}
+                onCodeUpdate={(type, code) => {
+                  if (type === "html") setGeneratedHtml(code)
+                  if (type === "schema") setGeneratedSchema(code)
+                  if (type === "api") setGeneratedApi(code)
+                }}
                 error={error}
               />
             </div>

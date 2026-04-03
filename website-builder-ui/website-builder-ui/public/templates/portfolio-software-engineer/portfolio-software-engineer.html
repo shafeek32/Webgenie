@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Morgan – Full Stack Engineer</title>
+    <meta name="description"
+        content="Full-stack software engineer specializing in React, Node.js, and cloud architecture. Available for hire.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="portfolio-software-engineer.css">
+</head>
+
+<body>
+    <canvas id="codeCanvas"></canvas>
+
+    <header class="header" id="header">
+        <a href="#" class="logo">&lt;AM /&gt;</a>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact" class="btn-hire">Hire Me</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">
+                <span class="dot"></span>
+                Available for work
+            </div>
+            <h1>Hi, I'm <span class="name">Alex Morgan</span> 👋</h1>
+            <div class="typewriter-wrap">
+                <span class="tw-prefix">I build </span>
+                <span class="tw-text" id="twText">scalable web apps</span>
+                <span class="tw-cursor">|</span>
+            </div>
+            <p class="hero-bio">Full-stack software engineer with 6+ years building products for scale. Obsessed with
+                clean code, great DX, and systems that don't break at 3 AM.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn-primary">View My Work</a>
+                <a href="#contact" class="btn-ghost">Get in Touch</a>
+            </div>
+        </div>
+        <div class="hero-code">
+            <div class="code-window">
+                <div class="code-titlebar">
+                    <div class="dots">
+                        <div class="d r"></div>
+                        <div class="d y"></div>
+                        <div class="d g"></div>
+                    </div>
+                    <span>portfolio.ts</span>
+                </div>
+                <div class="code-body">
+                    <div class="code-line"><span class="kw">const</span> <span class="var">dev</span> = {</div>
+                    <div class="code-line pad">name: <span class="str">"Alex Morgan"</span>,</div>
+                    <div class="code-line pad">role: <span class="str">"Full Stack Engineer"</span>,</div>
+                    <div class="code-line pad">stack: [<span class="str">"React"</span>, <span
+                            class="str">"Node"</span>, <span class="str">"AWS"</span>],</div>
+                    <div class="code-line pad">years: <span class="num">6</span>,</div>
+                    <div class="code-line pad">coffee: <span class="bool">true</span>,</div>
+                    <div class="code-line pad">openToWork: <span class="bool">true</span></div>
+                    <div class="code-line">};</div>
+                    <div class="code-line"> </div>
+                    <div class="code-line"><span class="kw">export default</span> dev;</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="section-inner">
+            <div class="section-label">// Skills</div>
+            <h2>What I Work With</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3>Frontend</h3>
+                    <div class="skill-bars">
+                        <div class="skill-item"><span>React / Next.js</span>
+                            <div class="bar">
+                                <div class="fill" style="width:95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>TypeScript</span>
+                            <div class="bar">
+                                <div class="fill" style="width:92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>CSS / Tailwind</span>
+                            <div class="bar">
+                                <div class="fill" style="width:90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>Vue / Nuxt</span>
+                            <div class="bar">
+                                <div class="fill" style="width:75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Backend</h3>
+                    <div class="skill-bars">
+                        <div class="skill-item"><span>Node.js / Express</span>
+                            <div class="bar">
+                                <div class="fill" style="width:90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>Python / FastAPI</span>
+                            <div class="bar">
+                                <div class="fill" style="width:80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>PostgreSQL / Redis</span>
+                            <div class="bar">
+                                <div class="fill" style="width:85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>GraphQL</span>
+                            <div class="bar">
+                                <div class="fill" style="width:78%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>DevOps & Cloud</h3>
+                    <div class="skill-bars">
+                        <div class="skill-item"><span>AWS / GCP</span>
+                            <div class="bar">
+                                <div class="fill" style="width:88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>Docker / K8s</span>
+                            <div class="bar">
+                                <div class="fill" style="width:82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>CI/CD / GitHub Actions</span>
+                            <div class="bar">
+                                <div class="fill" style="width:87%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item"><span>Terraform</span>
+                            <div class="bar">
+                                <div class="fill" style="width:70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="section-inner">
+            <div class="section-label">// Projects</div>
+            <h2>Selected Work</h2>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-header"><span class="proj-tag">React · Node · AWS</span><span
+                            class="proj-star">⭐ Featured</span></div>
+                    <h3>NexusPay – Payment Platform</h3>
+                    <p>Full-stack payment processing platform handling $2M+ monthly transactions. Built with React,
+                        Node.js microservices, and AWS infrastructure. 99.99% uptime.</p>
+                    <div class="proj-links"><a href="#">GitHub ↗</a><a href="#">Live Demo ↗</a></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><span class="proj-tag">Next.js · GraphQL</span></div>
+                    <h3>DevCollab – Team Dashboard</h3>
+                    <p>Real-time collaboration tool for dev teams with code review, task tracking, and CI/CD
+                        integration.</p>
+                    <div class="proj-links"><a href="#">GitHub ↗</a></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><span class="proj-tag">Python · FastAPI · ML</span></div>
+                    <h3>AutoDeploy – AI DevOps</h3>
+                    <p>ML-powered deployment optimization tool that reduced deployment time by 60% for a Series B
+                        startup.</p>
+                    <div class="proj-links"><a href="#">GitHub ↗</a></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><span class="proj-tag">React Native · Firebase</span></div>
+                    <h3>PocketMD – Health App</h3>
+                    <p>Cross-platform health tracking app with 50K+ downloads. Real-time sync and offline support.</p>
+                    <div class="proj-links"><a href="#">App Store ↗</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="section-inner">
+            <div class="section-label">// Experience</div>
+            <h2>Career Timeline</h2>
+            <div class="timeline">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content"><span class="tl-year">2022 – Present</span>
+                        <h3>Senior Software Engineer</h3>
+                        <p>Stripe · San Francisco (Remote)</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content"><span class="tl-year">2020 – 2022</span>
+                        <h3>Full Stack Engineer</h3>
+                        <p>Vercel · New York</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content"><span class="tl-year">2018 – 2020</span>
+                        <h3>Frontend Developer</h3>
+                        <p>Shopify · Ottawa, Canada</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content"><span class="tl-year">2018</span>
+                        <h3>B.Sc. Computer Science</h3>
+                        <p>UC Berkeley · GPA 3.9</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <div class="section-label">// Contact</div>
+            <h2>Let's Work Together</h2>
+            <p>I'm currently open to full-time roles and interesting freelance projects. Drop me a message!</p>
+            <div class="contact-links">
+                <a href="mailto:alex@example.com" class="c-link">📧 alex@example.com</a>
+                <a href="#" class="c-link">💼 LinkedIn</a>
+                <a href="#" class="c-link">🐙 GitHub</a>
+                <a href="#" class="c-link">🐦 Twitter</a>
+            </div>
+            <a href="#" class="btn-primary">Download CV</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span>&lt;AM /&gt;</span>
+        <p>Built with ❤️ and too much coffee · © 2026</p>
+    </footer>
+
+    <script src="portfolio-software-engineer.js"></script>
+</body>
+
+</html>

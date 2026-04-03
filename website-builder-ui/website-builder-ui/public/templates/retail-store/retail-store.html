@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanMart – Shop Smart, Live Better</title>
+    <meta name="description" content="Your one-stop retail destination for fashion, electronics, home, and lifestyle products with unbeatable prices.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="retail-store.css">
+</head>
+<body>
+    <div class="promo-bar">🎉 SUMMER SALE — Up to 60% OFF Everything | Free Shipping on Orders $50+ | <a href="#">Shop Now →</a></div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">Urban<span>Mart</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands, categories...">
+                <button>🔍</button>
+            </div>
+            <div class="header-actions">
+                <a href="#" class="icon-btn" title="Wishlist">♡ <span>Wishlist</span></a>
+                <a href="#" class="icon-btn" title="Account">👤 <span>Account</span></a>
+                <a href="#" class="cart-btn">🛒 Cart <span class="cart-count">3</span></a>
+            </div>
+        </div>
+        <nav class="category-nav">
+            <a href="#fashion">Fashion</a>
+            <a href="#electronics">Electronics</a>
+            <a href="#home">Home & Living</a>
+            <a href="#beauty">Beauty</a>
+            <a href="#sports">Sports</a>
+            <a href="#kids">Kids</a>
+            <a href="#grocery">Grocery</a>
+            <a href="#" class="sale-link">🔥 Sale</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-main">
+            <div class="hero-text">
+                <div class="hero-tag">New Season Collection</div>
+                <h1>Style Meets <span class="grad-text">Simplicity</span></h1>
+                <p>Discover thousands of curated products from top brands at prices that make sense.</p>
+                <div class="hero-cta">
+                    <a href="#categories" class="btn-primary">Shop Now</a>
+                    <a href="#deals" class="btn-outline">Today's Deals</a>
+                </div>
+            </div>
+            <div class="hero-products">
+                <div class="hero-product-card">
+                    <div class="product-badge">-40%</div>
+                    <div class="product-img-placeholder">👗</div>
+                    <div class="product-info">
+                        <span class="product-name">Summer Maxi Dress</span>
+                        <span class="product-price">$29.99 <del>$49.99</del></span>
+                    </div>
+                </div>
+                <div class="hero-product-card featured">
+                    <div class="product-badge">New</div>
+                    <div class="product-img-placeholder">📱</div>
+                    <div class="product-info">
+                        <span class="product-name">Pro Smartphone X15</span>
+                        <span class="product-price">$699.99</span>
+                    </div>
+                </div>
+                <div class="hero-product-card">
+                    <div class="product-badge">-25%</div>
+                    <div class="product-img-placeholder">🛋️</div>
+                    <div class="product-info">
+                        <span class="product-name">Luxury Sofa Set</span>
+                        <span class="product-price">$899.99 <del>$1,199.99</del></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by <em>Category</em></h2>
+            </div>
+            <div class="cat-grid">
+                <div class="cat-card fashion" id="fashion"><span class="cat-icon">👔</span><h3>Fashion</h3><p>12,000+ styles</p></div>
+                <div class="cat-card electronics" id="electronics"><span class="cat-icon">💻</span><h3>Electronics</h3><p>8,500+ products</p></div>
+                <div class="cat-card home" id="home"><span class="cat-icon">🏠</span><h3>Home & Living</h3><p>6,200+ items</p></div>
+                <div class="cat-card beauty"><span class="cat-icon">💄</span><h3>Beauty</h3><p>4,000+ brands</p></div>
+                <div class="cat-card sports" id="sports"><span class="cat-icon">⚽</span><h3>Sports</h3><p>3,500+ products</p></div>
+                <div class="cat-card grocery" id="grocery"><span class="cat-icon">🛒</span><h3>Grocery</h3><p>10,000+ items</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="deals" id="deals">
+        <div class="container">
+            <div class="deals-header">
+                <h2>🔥 Today's <em>Hot Deals</em></h2>
+                <div class="countdown" id="countdown">Ends in: <span id="timer">23:59:59</span></div>
+            </div>
+            <div class="deals-grid">
+                <div class="deal-card"><div class="deal-discount">60% OFF</div><div class="deal-img">🎧</div><h3>Wireless Noise-Cancelling Headphones</h3><div class="deal-price"><span class="new-price">$79.99</span><span class="old-price">$199.99</span></div><div class="deal-bar"><div class="bar-fill" style="width:75%"></div></div><span class="deal-sold">75% sold</span><button class="btn-add">Add to Cart</button></div>
+                <div class="deal-card"><div class="deal-discount">45% OFF</div><div class="deal-img">👟</div><h3>Premium Running Shoes</h3><div class="deal-price"><span class="new-price">$54.99</span><span class="old-price">$99.99</span></div><div class="deal-bar"><div class="bar-fill" style="width:40%"></div></div><span class="deal-sold">40% sold</span><button class="btn-add">Add to Cart</button></div>
+                <div class="deal-card"><div class="deal-discount">30% OFF</div><div class="deal-img">🕶️</div><h3>Designer Sunglasses</h3><div class="deal-price"><span class="new-price">$69.99</span><span class="old-price">$99.99</span></div><div class="deal-bar"><div class="bar-fill" style="width:60%"></div></div><span class="deal-sold">60% sold</span><button class="btn-add">Add to Cart</button></div>
+                <div class="deal-card"><div class="deal-discount">50% OFF</div><div class="deal-img">⌚</div><h3>Smart Fitness Watch</h3><div class="deal-price"><span class="new-price">$124.99</span><span class="old-price">$249.99</span></div><div class="deal-bar"><div class="bar-fill" style="width:88%"></div></div><span class="deal-sold">88% sold</span><button class="btn-add">Add to Cart</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="loyalty">
+        <div class="container">
+            <div class="loyalty-inner">
+                <div class="loyalty-text">
+                    <span class="section-tag">UrbanMart Rewards</span>
+                    <h2>Earn Points on <em>Every Purchase</em></h2>
+                    <p>Join 2 million+ members who earn rewards, access exclusive deals, and get priority shipping.</p>
+                    <div class="loyalty-tiers">
+                        <div class="tier silver"><div class="tier-name">Silver</div><div class="tier-points">0–999 pts</div></div>
+                        <div class="tier gold"><div class="tier-name">Gold</div><div class="tier-points">1K–4.9K pts</div></div>
+                        <div class="tier platinum"><div class="tier-name">Platinum</div><div class="tier-points">5K+ pts</div></div>
+                    </div>
+                    <a href="#" class="btn-primary">Join Free — Earn 100 Bonus Points</a>
+                </div>
+                <div class="loyalty-perks">
+                    <div class="perk"><span>🚚</span><div><strong>Free Shipping</strong><p>On all orders for Gold & Platinum members</p></div></div>
+                    <div class="perk"><span>🎁</span><div><strong>Birthday Rewards</strong><p>Special discount on your birthday every year</p></div></div>
+                    <div class="perk"><span>⚡</span><div><strong>Early Access</strong><p>Shop sales 24 hours before everyone else</p></div></div>
+                    <div class="perk"><span>↩️</span><div><strong>Easy Returns</strong><p>365-day hassle-free return policy</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="#" class="logo">Urban<span>Mart</span></a><p>Shop smarter. Live better.</p><div class="app-badges"><button>📱 App Store</button><button>🤖 Google Play</button></div></div>
+                <div class="footer-col"><h4>Shop</h4><a href="#">Fashion</a><a href="#">Electronics</a><a href="#">Home</a><a href="#">Sale</a></div>
+                <div class="footer-col"><h4>Support</h4><a href="#">Track Order</a><a href="#">Returns</a><a href="#">FAQ</a><a href="#">Contact</a></div>
+                <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Sustainability</a></div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 UrbanMart Inc. All rights reserved. | 💳 Visa | Mastercard | PayPal | Apple Pay</p></div>
+        </div>
+    </footer>
+
+    <script src="retail-store.js"></script>
+</body>
+</html>

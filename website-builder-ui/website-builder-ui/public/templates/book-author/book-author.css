@@ -1,0 +1,341 @@
+/* book-author.css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+:root {
+    --bg: #fdfaF5;
+    --dark: #1a1209;
+    --burgundy: #5c1a2e;
+    --text: #2d2410;
+    --muted: #8a7a60;
+    --cream: #f5f0e8;
+    --font-serif: 'Libre Baskerville', Georgia, serif;
+    --font-sans: 'Barlow', sans-serif
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    overflow-x: hidden
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(253, 250, 245, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    text-decoration: none;
+    color: var(--text)
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-left: 2.5rem;
+    transition: color 0.2s
+}
+
+.nav a:hover {
+    color: var(--burgundy)
+}
+
+.btn-nw {
+    background: var(--burgundy);
+    color: #fff !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 8rem 4rem;
+    overflow: hidden;
+    background: linear-gradient(160deg, #fdfaf5, var(--cream))
+}
+
+.hero-ink {
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(92, 26, 46, 0.04), transparent 70%);
+    pointer-events: none
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem
+}
+
+.hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--burgundy)
+}
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 400
+}
+
+.hero-content h1 em {
+    color: var(--burgundy);
+    font-style: italic
+}
+
+.hero-content p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.9;
+    max-width: 440px
+}
+
+.hero-btn {
+    display: inline-block;
+    border: 1px solid var(--burgundy);
+    color: var(--burgundy);
+    padding: 0.9rem 2.5rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    width: fit-content
+}
+
+.hero-btn:hover {
+    background: var(--burgundy);
+    color: #fff
+}
+
+.hero-book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem
+}
+
+.book-cover {
+    display: flex;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    transition: transform 0.4s
+}
+
+.book-cover:hover {
+    transform: rotate(2deg) scale(1.03)
+}
+
+.book-spine {
+    width: 30px;
+    background: linear-gradient(to right, #0a0505, #2d0a10);
+    border-radius: 2px 0 0 2px
+}
+
+.book-front {
+    width: 200px;
+    border-radius: 0 4px 4px 0;
+    overflow: hidden
+}
+
+.book-art {
+    height: 250px
+}
+
+.book-title-block {
+    padding: 1.2rem;
+    background: #fff;
+    text-align: center
+}
+
+.book-title-block h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 0.3rem
+}
+
+.book-title-block p {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-style: italic
+}
+
+.book-badge {
+    background: var(--burgundy);
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em
+}
+
+.books {
+    padding: 6rem 4rem;
+    background: #fff
+}
+
+.books h2,
+.events h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    color: var(--dark)
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    transition: transform 0.3s;
+    cursor: pointer
+}
+
+.book-card:hover {
+    transform: translateY(-6px)
+}
+
+.bk-cover {
+    height: 220px;
+    border-radius: 4px
+}
+
+.book-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--dark)
+}
+
+.book-card span {
+    font-size: 0.8rem;
+    color: var(--muted)
+}
+
+.events {
+    padding: 6rem 4rem;
+    background: var(--cream)
+}
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 900px
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08)
+}
+
+.event-date {
+    text-align: center;
+    width: 60px;
+    flex-shrink: 0
+}
+
+.event-date span {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--burgundy)
+}
+
+.event-date strong {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--dark);
+    line-height: 1
+}
+
+.event-info {
+    flex: 1
+}
+
+.event-info h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 0.3rem
+}
+
+.event-info p {
+    font-size: 0.85rem;
+    color: var(--muted)
+}
+
+.event-btn {
+    border: 1px solid var(--burgundy);
+    color: var(--burgundy);
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    white-space: nowrap
+}
+
+.event-btn:hover {
+    background: var(--burgundy);
+    color: #fff
+}
+
+.footer {
+    padding: 2.5rem 4rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 0.8rem
+}

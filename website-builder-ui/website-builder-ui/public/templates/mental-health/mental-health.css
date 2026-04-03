@@ -1,0 +1,426 @@
+/* mental-health.css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+:root {
+    --bg: #fafaf8;
+    --green: #2d9d78;
+    --purple: #7c5cbf;
+    --lavender: #ede9fe;
+    --cream: #fdf8f1;
+    --text: #2d2d2d;
+    --muted: #6b7280;
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'DM Sans', sans-serif
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans)
+}
+
+.breathing-ring {
+    position: fixed;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    z-index: 50;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.6rem;
+    color: var(--green);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    animation: breathe 4s ease-in-out infinite
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 0.6;
+        box-shadow: 0 0 0 0 rgba(45, 157, 120, 0.4)
+    }
+
+    50% {
+        transform: translateY(-50%) scale(1.3);
+        opacity: 1;
+        box-shadow: 0 0 0 20px rgba(45, 157, 120, 0)
+    }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    background: rgba(250, 250, 248, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text)
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: color 0.2s
+}
+
+.nav a:hover {
+    color: var(--green)
+}
+
+.btn-book {
+    background: var(--green);
+    color: #fff !important;
+    padding: 0.55rem 1.3rem;
+    border-radius: 100px;
+    font-weight: 500
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    overflow: hidden;
+    background: linear-gradient(160deg, #f0fdf4, #faf5ff, #fdf8f1)
+}
+
+.bg-waves {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none
+}
+
+.wave {
+    position: absolute;
+    border-radius: 50%;
+    animation: wave-float 8s ease-in-out infinite
+}
+
+.wave1 {
+    width: 700px;
+    height: 700px;
+    background: rgba(45, 157, 120, 0.06);
+    top: -200px;
+    right: -150px;
+    animation-delay: 0s
+}
+
+.wave2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(124, 92, 191, 0.05);
+    bottom: -150px;
+    left: -100px;
+    animation-delay: 2s
+}
+
+.wave3 {
+    width: 300px;
+    height: 300px;
+    background: rgba(45, 157, 120, 0.04);
+    top: 50%;
+    left: 50%;
+    animation-delay: 4s
+}
+
+@keyframes wave-float {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg)
+    }
+
+    50% {
+        transform: scale(1.1) rotate(5deg)
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem
+}
+
+.hero-tag {
+    display: inline-block;
+    background: #d1fae5;
+    border: 1px solid #6ee7b7;
+    color: var(--green);
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    width: fit-content
+}
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 400
+}
+
+.hero-content h1 em {
+    color: var(--green);
+    font-style: italic
+}
+
+.hero-content p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 480px
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap
+}
+
+.btn-primary {
+    background: var(--green);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border-radius: 14px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background 0.2s;
+    box-shadow: 0 8px 24px rgba(45, 157, 120, 0.25)
+}
+
+.btn-primary:hover {
+    background: #238a67
+}
+
+.btn-ghost {
+    color: var(--green);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.9rem 0;
+    transition: opacity 0.2s
+}
+
+.btn-ghost:hover {
+    opacity: 0.7
+}
+
+.trust-bar {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap
+}
+
+.trust-item {
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.08)
+}
+
+.services {
+    padding: 6rem 3rem;
+    background: #fff
+}
+
+.services-inner {
+    max-width: 1100px;
+    margin: 0 auto
+}
+
+.services h2,
+.therapists h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 3rem
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem
+}
+
+.service-card {
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08)
+}
+
+.service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem
+}
+
+.service-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem
+}
+
+.service-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7
+}
+
+.therapists {
+    padding: 6rem 3rem;
+    background: var(--cream)
+}
+
+.therapist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto
+}
+
+.therapist-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s
+}
+
+.therapist-card:hover {
+    transform: translateY(-4px)
+}
+
+.therapist-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 1.2rem
+}
+
+.therapist-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem
+}
+
+.therapist-card span {
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 1rem
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-bottom: 1.2rem
+}
+
+.rating p {
+    font-size: 0.8rem;
+    color: var(--muted)
+}
+
+.book-btn {
+    display: block;
+    background: var(--lavender);
+    color: var(--purple);
+    padding: 0.65rem 1.5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background 0.2s
+}
+
+.book-btn:hover {
+    background: #ddd6fe
+}
+
+.footer {
+    padding: 2.5rem 3rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    text-align: center
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center
+}
+
+.footer p {
+    font-size: 0.85rem;
+    color: var(--muted)
+}
+
+.copy {
+    font-size: 0.75rem !important
+}

@@ -3,91 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocery Store</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>FreshGrocer | Premium Online Supermarket</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        .glassmorph {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        .dark-neon {
-            background: #1a1d23;
-            color: #fff;
-        }
-        .skewed {
-            transform: skewY(-10deg);
-        }
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="ecommerce-groceries.css" rel="stylesheet">
 </head>
-<body class="dark-neon">
-    <header class="text-white glassmorph p-10 mb-10">
-        <h1 class="text-5xl font-bold mb-5">Grocery Store</h1>
-        <nav class="flex justify-between">
-            <a href="#" class="text-2xl font-bold mr-10">Home</a>
-            <a href="#" class="text-2xl font-bold mr-10">Shop</a>
-            <a href="#" class="text-2xl font-bold">Contact</a>
-        </nav>
+<body>
+    <div id="leafCanvas"></div>
+
+    <!-- Promotional Banner -->
+    <div class="promo-bar">
+        Free delivery on first order over $50! Use code <strong>FRESH50</strong>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">🥬</span> FreshGrocer
+            </a>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search for fresh organic produce, dairy, bakery...">
+                <button type="button">🔍</button>
+            </div>
+
+            <nav class="nav">
+                <a href="#departments">Departments</a>
+                <a href="#bestsellers">Bestsellers</a>
+                <a href="#deals" class="deal-link">🔥 Deals</a>
+                
+                <div class="header-actions">
+                    <a href="#" class="icon-btn">
+                        👤<span>Account</span>
+                    </a>
+                    <a href="#" class="icon-btn">
+                        ❤️<span>Saved</span>
+                    </a>
+                    <a href="#" class="cart-btn">
+                        🛒 <span class="cart-amount">$0.00</span> <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="nav-secondary">
+            <div class="nav-secondary-inner">
+                <button class="btn-departments">☰ All Departments</button>
+                <div class="quick-links">
+                    <a href="#">Fresh Produce</a>
+                    <a href="#">Organic</a>
+                    <a href="#">Dairy & Eggs</a>
+                    <a href="#">Meat & Seafood</a>
+                    <a href="#">Bakery</a>
+                    <a href="#">Pantry</a>
+                    <a href="#">Frozen</a>
+                </div>
+            </div>
+        </div>
     </header>
-    <main class="container mx-auto p-10">
-        <section class="skewed bg-orange-500 p-10 mb-10">
-            <h2 class="text-3xl font-bold mb-5">Fresh Produce</h2>
-            <p class="text-lg mb-10">Get the freshest fruits and vegetables delivered to your doorstep.</p>
-            <button class="bg-green-500 text-white p-5 rounded-lg">Shop Now</button>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <span class="hero-badge">🌱 100% Certified Organic</span>
+                    <h1>Farm Fresh to <br>Your Front Door</h1>
+                    <p>Discover the finest selection of organic produce, artisanal meats, and everyday essentials delivered straight from local farms.</p>
+                    <div class="hero-actions">
+                        <a href="#shop" class="btn-primary">Shop Fresh Now</a>
+                        <a href="#how" class="btn-outline">How it Works</a>
+                    </div>
+                    
+                    <div class="trust-indicators">
+                        <div class="ti-item">
+                            <span class="ti-icon">🚚</span>
+                            <div>
+                                <strong>Same Day Delivery</strong>
+                                <span>Order before 2 PM</span>
+                            </div>
+                        </div>
+                        <div class="ti-item">
+                            <span class="ti-icon">🛡️</span>
+                            <div>
+                                <strong>Freshness Guarantee</strong>
+                                <span>100% money back</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="produce-card large">
+                        <div class="pc-badge">Best Value</div>
+                        <div class="produce-img i1">🥑</div>
+                        <div class="pc-content">
+                            <h3>Organic Hass Avocados</h3>
+                            <p>Locally sourced, perfectly ripe.</p>
+                            <div class="pc-price">
+                                <span>$4.99 <em>/ lb</em></span>
+                                <button class="btn-add">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-grid-small">
+                        <div class="produce-card">
+                            <div class="produce-img i2">🍓</div>
+                            <div class="pc-content">
+                                <h3>Fresh Strawberries</h3>
+                                <div class="pc-price">
+                                    <span>$3.50 <em>/ box</em></span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="produce-card">
+                            <div class="produce-img i3">🍞</div>
+                            <div class="pc-content">
+                                <h3>Artisan Sourdough</h3>
+                                <div class="pc-price">
+                                    <span>$5.00 <em>/ loaf</em></span>
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section class="bento-grid mb-10">
-            <div class="glassmorph p-10">
-                <h3 class="text-2xl font-bold mb-5">Dairy Products</h3>
-                <p class="text-lg mb-10">Milk, cheese, yogurt, and more.</p>
-                <button class="bg-blue-500 text-white p-5 rounded-lg">View Products</button>
+
+        <!-- Categories -->
+        <section class="categories container" id="departments">
+            <div class="section-header">
+                <h2>Explore <em>Categories</em></h2>
+                <a href="#" class="view-all">View All →</a>
             </div>
-            <div class="glassmorph p-10">
-                <h3 class="text-2xl font-bold mb-5">Meat and Poultry</h3>
-                <p class="text-lg mb-10">Fresh meat, poultry, and seafood.</p>
-                <button class="bg-red-500 text-white p-5 rounded-lg">View Products</button>
-            </div>
-            <div class="glassmorph p-10">
-                <h3 class="text-2xl font-bold mb-5">Bakery</h3>
-                <p class="text-lg mb-10">Freshly baked bread, cakes, and pastries.</p>
-                <button class="bg-yellow-500 text-white p-5 rounded-lg">View Products</button>
+            
+            <div class="category-grid">
+                <a href="#" class="cat-card bg-green">
+                    <div class="cat-icon">🥦</div>
+                    <h3>Fresh Produce</h3>
+                    <span>145 Items</span>
+                </a>
+                <a href="#" class="cat-card bg-orange">
+                    <div class="cat-icon">🥚</div>
+                    <h3>Dairy & Eggs</h3>
+                    <span>86 Items</span>
+                </a>
+                <a href="#" class="cat-card bg-red">
+                    <div class="cat-icon">🥩</div>
+                    <h3>Meat & Seafood</h3>
+                    <span>92 Items</span>
+                </a>
+                <a href="#" class="cat-card bg-yellow">
+                    <div class="cat-icon">🥖</div>
+                    <h3>Bakery</h3>
+                    <span>45 Items</span>
+                </a>
+                <a href="#" class="cat-card bg-blue">
+                    <div class="cat-icon">🧊</div>
+                    <h3>Frozen Foods</h3>
+                    <span>120 Items</span>
+                </a>
+                <a href="#" class="cat-card bg-purple">
+                    <div class="cat-icon">🧃</div>
+                    <h3>Beverages</h3>
+                    <span>210 Items</span>
+                </a>
             </div>
         </section>
-        <section class="mb-10">
-            <h2 class="text-3xl font-bold mb-5">Nutrition Calculator</h2>
-            <div class="glassmorph p-10">
-                <label for="calories" class="text-lg mb-5">Enter your daily calorie intake:</label>
-                <input type="number" id="calories" class="p-5 rounded-lg mb-10">
-                <button class="bg-purple-500 text-white p-5 rounded-lg" onclick="calculateNutrition()">Calculate</button>
-                <div id="result" class="text-lg mb-10"></div>
+
+        <!-- Fresh Deals -->
+        <section class="deals" id="deals">
+            <div class="container">
+                <div class="deals-header">
+                    <div>
+                        <h2>Weekly <em>Fresh Deals</em></h2>
+                        <p>Save big on your everyday favorites. Offers end soon!</p>
+                    </div>
+                    <div class="countdown">
+                        Ends in: <span id="timer">02:14:35:12</span>
+                    </div>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="discount-tag">-20%</div>
+                        <div class="product-img">🍎</div>
+                        <div class="product-info">
+                            <span class="product-cat">Fruits</span>
+                            <h3>Organic Gala Apples</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(45)</span></div>
+                            <div class="product-bottom">
+                                <div class="price-box">
+                                    <span class="current-price">$2.99</span>
+                                    <span class="old-price">$3.99</span>
+                                </div>
+                                <button class="btn-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="discount-tag">-15%</div>
+                        <div class="product-img">🥛</div>
+                        <div class="product-info">
+                            <span class="product-cat">Dairy</span>
+                            <h3>Whole Farm Milk 1Gal</h3>
+                            <div class="product-rating">⭐⭐⭐⭐½ <span>(128)</span></div>
+                            <div class="product-bottom">
+                                <div class="price-box">
+                                    <span class="current-price">$4.25</span>
+                                    <span class="old-price">$5.00</span>
+                                </div>
+                                <button class="btn-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-img">🥕</div>
+                        <div class="product-info">
+                            <span class="product-cat">Vegetables</span>
+                            <h3>Organic Carrots Bunch</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(89)</span></div>
+                            <div class="product-bottom">
+                                <div class="price-box">
+                                    <span class="current-price">$1.50</span>
+                                </div>
+                                <button class="btn-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-img">🧀</div>
+                        <div class="product-info">
+                            <span class="product-cat">Dairy</span>
+                            <h3>Aged Cheddar Cheese</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(210)</span></div>
+                            <div class="product-bottom">
+                                <div class="price-box">
+                                    <span class="current-price">$6.99</span>
+                                </div>
+                                <button class="btn-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Download -->
+        <section class="app-banner">
+            <div class="container">
+                <div class="app-inner">
+                    <div class="app-content">
+                        <h2>Get Your Groceries in <em>Minutes</em></h2>
+                        <p>Download the FreshGrocer app and get $10 off your first order. Track your delivery in real-time and enjoy exclusive app-only discounts.</p>
+                        
+                        <div class="app-features">
+                            <div>✓ Fast & Real-time Tracking</div>
+                            <div>✓ Exclusive Daily Deals</div>
+                            <div>✓ Easy One-tap Reordering</div>
+                        </div>
+                        
+                        <div class="app-buttons">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style="height: 45px; cursor: pointer;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="height: 45px; cursor: pointer;">
+                        </div>
+                    </div>
+                    <div class="app-visual">
+                        <div class="mockup">
+                            <div class="mockup-header">FreshGrocer</div>
+                            <div class="mockup-body">
+                                <div class="m-card">Delivery Time: <strong>14 Mins</strong></div>
+                                <div class="m-map">Order on the way! 🚚</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <script>
-        function calculateNutrition() {
-            const calories = document.getElementById("calories").value;
-            const result = document.getElementById("result");
-            const protein = calories * 0.2;
-            const carbohydrates = calories * 0.5;
-            const fat = calories * 0.3;
-            result.innerHTML = `Protein: ${protein}g, Carbohydrates: ${carbohydrates}g, Fat: ${fat}g`;
-        }
-    </script>
-    <footer class="text-white glassmorph p-10 mt-10">
-        <p class="text-lg mb-5">&copy; 2024 Grocery Store</p>
-        <nav class="flex justify-between">
-            <a href="#" class="text-lg mr-10">Home</a>
-            <a href="#" class="text-lg mr-10">Shop</a>
-            <a href="#" class="text-lg">Contact</a>
-        </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo text-white">
+                    <span class="logo-icon">🥬</span> FreshGrocer
+                </a>
+                <p>Bringing you the finest and freshest organic groceries from local farms straight to your home.</p>
+                <div class="contact-info">
+                    <p>📞 1-800-FRESH-GR</p>
+                    <p>✉️ support@freshgrocer.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Shop Departments</h4>
+                <a href="#">Fresh Produce</a>
+                <a href="#">Meat & Seafood</a>
+                <a href="#">Dairy & Eggs</a>
+                <a href="#">Bakery & Bread</a>
+                <a href="#">Pantry Staples</a>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Track Order</a>
+                <a href="#">Return Policy</a>
+                <a href="#">Delivery Info</a>
+                <a href="#">Contact Us</a>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Subscribe to Newsletter</h4>
+                <p style="color: #cbd5e1; font-size: 0.85rem; margin-bottom: 1rem;">Get the latest updates on new products and upcoming sales.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container flex-bt">
+                <p>&copy; 2024 FreshGrocer Inc. All rights reserved.</p>
+                <div class="payment-icons">
+                    💳 💰 💸
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script src="ecommerce-groceries.js"></script>
 </body>
 </html>

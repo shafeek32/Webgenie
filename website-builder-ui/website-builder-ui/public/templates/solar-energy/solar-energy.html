@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solaris Energy – Solar Power for the Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="solar-energy.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <a href="#" class="logo">☀️ Solaris</a>
+        <nav class="nav">
+            <a href="#solutions">Solutions</a>
+            <a href="#calculator">Calculator</a>
+            <a href="#impact">Impact</a>
+            <a href="#" class="btn-quote">Get a Free Quote</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <canvas id="sunCanvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-badge">🌿 Carbon Neutral Certified</div>
+            <h1>Power Your World<br>With <span>Pure Sunlight</span></h1>
+            <p>Residential and commercial solar installations. Zero upfront cost options. Start saving on day one.</p>
+            <div class="hero-cta">
+                <a href="#calculator" class="btn-primary">Calculate My Savings</a>
+                <a href="#solutions" class="btn-ghost">See Solutions</a>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric"><span>2.4M+</span>
+                    <p>Homes Powered</p>
+                </div>
+                <div class="metric"><span>8.2M tons</span>
+                    <p>CO₂ Avoided</p>
+                </div>
+                <div class="metric"><span>$1.8B</span>
+                    <p>Saved for Customers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="solutions" id="solutions">
+        <h2>Our Solar Solutions</h2>
+        <div class="sol-grid">
+            <div class="sol-card">
+                <div class="sol-icon">🏠</div>
+                <h3>Residential</h3>
+                <p>Custom rooftop systems for homes. Includes battery storage, monitoring, and 25-year warranty.</p>
+                <div class="sol-savings">Avg. savings: $2,400/yr</div>
+            </div>
+            <div class="sol-card featured">
+                <div class="sol-icon">🏢</div>
+                <h3>Commercial</h3>
+                <p>Scale from 50kW to 10MW. Grid-tied and off-grid solutions with full project management.</p>
+                <div class="sol-savings">Avg. savings: $24,000/yr</div>
+            </div>
+            <div class="sol-card">
+                <div class="sol-icon">🔋</div>
+                <h3>Battery Storage</h3>
+                <p>Store your daytime solar energy and power your home through the night and outages.</p>
+                <div class="sol-savings">Energy independence: Day 1</div>
+            </div>
+            <div class="sol-card">
+                <div class="sol-icon">🌱</div>
+                <h3>Community Solar</h3>
+                <p>No roof required. Subscribe to a shared solar farm and still enjoy the benefits.</p>
+                <div class="sol-savings">Avg. savings: $900/yr</div>
+            </div>
+        </div>
+    </section>
+    <section class="calculator" id="calculator">
+        <div class="calc-inner">
+            <div class="calc-text">
+                <h2>How Much Can You Save?</h2>
+                <p>Enter your average monthly electricity bill to get an instant savings estimate.</p>
+            </div>
+            <div class="calc-widget">
+                <label>Monthly Bill ($)</label>
+                <input type="range" min="50" max="500" value="150" id="billSlider">
+                <div class="calc-display"><span>Monthly bill: $<strong id="billVal">150</strong></span><span>Est.
+                        savings/year: <strong id="savingsVal" style="color:var(--yellow)">$1,620</strong></span></div>
+                <a href="#" class="btn-primary">Get My Full Estimate</a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer"><span class="logo">☀️ Solaris</span>
+        <p>© 2026 Solaris Energy Inc. A cleaner tomorrow, today.</p>
+    </footer>
+    <script src="solar-energy.js"></script>
+</body>
+
+</html>

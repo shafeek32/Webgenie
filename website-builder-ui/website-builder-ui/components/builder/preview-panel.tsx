@@ -4,10 +4,11 @@ import type React from "react"
 
 import { useState } from "react"
 import { cn } from "@/lib/utils"
-import { GripVertical, Trash2, Edit3, Move } from "lucide-react"
+import { GripVertical, Trash2, Edit3, Move, Code, Eye } from "lucide-react"
 import { Spinner } from "@/components/ui/spinner"
 import type { WebsiteElement, GenerationState } from "@/lib/types"
 import { RenderElement } from "@/components/builder/render-element"
+import Editor from "@monaco-editor/react"
 
 interface PreviewPanelProps {
   elements: WebsiteElement[]
@@ -15,10 +16,14 @@ interface PreviewPanelProps {
   onElementSelect: (element: WebsiteElement) => void
   onElementUpdate: (id: string, updates: Partial<WebsiteElement>) => void
   onDeleteElement: (id: string) => void
+  onAddElement: (type: string, index?: number) => void
   onMoveElement: (dragIndex: number, hoverIndex: number) => void
   generationState: GenerationState
-  // If provided, the generated HTML will be rendered in an iframe preview
+  // If provided, the generated code will be rendered
   generatedHtml?: string | null
+  generatedSchema?: string | null
+  generatedApi?: string | null
+  onCodeUpdate?: (type: "html" | "schema" | "api", code: string) => void
   error?: string | null
 }
 
@@ -28,14 +33,20 @@ export function PreviewPanel({
   onElementSelect,
   onElementUpdate,
   onDeleteElement,
+  onAddElement,
   onMoveElement,
   generationState,
   generatedHtml,
+  generatedSchema,
+  generatedApi,
+  onCodeUpdate,
   error,
 }: PreviewPanelProps) {
   const [hoveredElement, setHoveredElement] = useState<string | null>(null)
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+  const [viewMode, setViewMode] = useState<"visual" | "code">("visual")
+  const [activeCodeFile, setActiveCodeFile] = useState<"html" | "schema" | "api">("html")
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
     setDraggedIndex(index)
@@ -57,24 +68,61 @@ export function PreviewPanel({
     setDragOverIndex(null)
   }
 
+  const handleMainDrop = (e: React.DragEvent) => {
+    e.preventDefault()
+    const componentType = e.dataTransfer.getData("componentType")
+    if (componentType) {
+      // If we dropped over an existing element, insert it there. Otherwise append to the end.
+      onAddElement(componentType, dragOverIndex !== null ? dragOverIndex : undefined)
+    }
+    setDragOverIndex(null)
+  }
+
   return (
-    <div className="flex-1 overflow-auto bg-background/50 p-6">
+    <div
+      className="flex-1 overflow-auto bg-background/50 p-6"
+      onDragOver={(e) => e.preventDefault()}
+      onDrop={handleMainDrop}
+    >
       <div className="max-w-5xl mx-auto">
         {/* Preview Frame */}
         <div className="bg-card rounded-xl border border-border shadow-2xl overflow-hidden">
           {/* Browser Chrome */}
           <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b border-border">
-            <div className="flex gap-1.5">
+            <div className="flex gap-1.5 w-24">
               <div className="w-3 h-3 rounded-full bg-destructive/50" />
               <div className="w-3 h-3 rounded-full bg-chart-4/50" />
               <div className="w-3 h-3 rounded-full bg-accent/50" />
             </div>
             <div className="flex-1 flex justify-center">
-              <div className="px-4 py-1 bg-input rounded-md text-xs text-muted-foreground flex items-center gap-2">
-                <span className="text-accent">🔒</span>
-                yourwebsite.com
+              <div className="flex bg-input/50 p-1 rounded-lg">
+                <button
+                  onClick={() => setViewMode("visual")}
+                  className={cn(
+                    "flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-md transition-all",
+                    viewMode === "visual"
+                      ? "bg-background text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  Visual
+                </button>
+                <button
+                  onClick={() => setViewMode("code")}
+                  className={cn(
+                    "flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-md transition-all",
+                    viewMode === "code"
+                      ? "bg-background text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <Code className="w-3.5 h-3.5" />
+                  Code
+                </button>
               </div>
             </div>
+            <div className="w-24" /> {/* Balance for layout */}
           </div>
 
           {/* Preview Content */}
@@ -89,60 +137,102 @@ export function PreviewPanel({
             )}
             {/* If the AI returned a complete HTML document, render it directly inside an iframe */}
             {generatedHtml ? (
-              <div className="w-full h-[700px] relative group">
-                <iframe
-                  key={generatedHtml?.slice(0, 64)}
-                  className="w-full h-full border-0"
-                  title="AI Generated Preview"
-                  srcDoc={generatedHtml}
-                  onLoad={(e) => {
-                    const doc = e.currentTarget.contentDocument
-                    if (!doc) return
+              <div className="w-full h-[700px] relative group flex flex-col">
+                {viewMode === "code" ? (
+                  <div className="flex-1 w-full h-full flex flex-col">
+                    <div className="flex bg-card border-b border-border/50 p-2 gap-2">
+                      <button
+                        onClick={() => setActiveCodeFile("html")}
+                        className={cn("px-4 py-1.5 text-xs font-medium rounded-md transition-colors", activeCodeFile === "html" ? "bg-accent/20 text-accent" : "text-muted-foreground hover:bg-secondary/50")}
+                      >
+                        page.tsx
+                      </button>
+                      <button
+                        onClick={() => setActiveCodeFile("api")}
+                        className={cn("px-4 py-1.5 text-xs font-medium rounded-md transition-colors", activeCodeFile === "api" ? "bg-accent/20 text-accent" : "text-muted-foreground hover:bg-secondary/50")}
+                      >
+                        route.ts
+                      </button>
+                      <button
+                        onClick={() => setActiveCodeFile("schema")}
+                        className={cn("px-4 py-1.5 text-xs font-medium rounded-md transition-colors", activeCodeFile === "schema" ? "bg-accent/20 text-accent" : "text-muted-foreground hover:bg-secondary/50")}
+                      >
+                        schema.prisma
+                      </button>
+                    </div>
+                    <div className="flex-1 w-full relative">
+                      <Editor
+                        height="100%"
+                        defaultLanguage={activeCodeFile === "schema" ? "graphql" : activeCodeFile === "api" ? "typescript" : "html"}
+                        theme="vs-dark"
+                        value={activeCodeFile === "schema" ? generatedSchema || "" : activeCodeFile === "api" ? generatedApi || "" : generatedHtml || ""}
+                        onChange={(value) => onCodeUpdate?.(activeCodeFile, value || "")}
+                        options={{
+                          minimap: { enabled: false },
+                          fontSize: 14,
+                          wordWrap: "on",
+                          padding: { top: 16 }
+                        }}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <iframe
+                      key={generatedHtml?.slice(0, 64)}
+                      className="w-full h-full border-0"
+                      title="AI Generated Preview"
+                      srcDoc={generatedHtml}
+                      onLoad={(e) => {
+                        const doc = e.currentTarget.contentDocument
+                        if (!doc) return
 
-                    // Inject Styles
-                    const link = doc.createElement("link")
-                    link.rel = "stylesheet"
-                    link.href = "/scripts/edit-mode.css"
-                    doc.head.appendChild(link)
+                        // Inject Styles
+                        const link = doc.createElement("link")
+                        link.rel = "stylesheet"
+                        link.href = "/scripts/edit-mode.css"
+                        doc.head.appendChild(link)
 
-                    // Inject Script
-                    const script = doc.createElement("script")
-                    script.src = "/scripts/edit-mode.js"
-                    doc.head.appendChild(script)
-                  }}
-                  sandbox="allow-scripts allow-same-origin allow-forms"
-                />
+                        // Inject Script
+                        const script = doc.createElement("script")
+                        script.src = "/scripts/edit-mode.js"
+                        doc.head.appendChild(script)
+                      }}
+                      sandbox="allow-scripts allow-same-origin allow-forms"
+                    />
 
-                {/* Hidden Image Input for Iframe Integration */}
-                <input
-                  type="file"
-                  id="integrated-image-upload"
-                  className="hidden"
-                  accept="image/*"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0]
-                    if (file) {
-                      const reader = new FileReader()
-                      reader.onload = (event) => {
-                        const iframe = document.querySelector('iframe')
-                        iframe?.contentWindow?.postMessage({
-                          type: 'IMAGE_SELECTED',
-                          url: event.target?.result
-                        }, '*')
-                      }
-                      reader.readAsDataURL(file)
-                    }
-                  }}
-                />
+                    {/* Hidden Image Input for Iframe Integration */}
+                    <input
+                      type="file"
+                      id="integrated-image-upload"
+                      className="hidden"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0]
+                        if (file) {
+                          const reader = new FileReader()
+                          reader.onload = (event) => {
+                            const iframe = document.querySelector('iframe')
+                            iframe?.contentWindow?.postMessage({
+                              type: 'IMAGE_SELECTED',
+                              url: event.target?.result
+                            }, '*')
+                          }
+                          reader.readAsDataURL(file)
+                        }
+                      }}
+                    />
 
-                <script dangerouslySetInnerHTML={{
-                  __html: `
+                    <script dangerouslySetInnerHTML={{
+                      __html: `
                   window.addEventListener('message', (event) => {
                     if (event.data.type === 'REQUEST_IMAGE_UPLOAD') {
                       document.getElementById('integrated-image-upload').click();
                     }
                   });
                 `}} />
+                  </>
+                )}
               </div>
             ) : (
               <>
