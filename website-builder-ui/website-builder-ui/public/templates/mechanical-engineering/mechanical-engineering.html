@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>PrecisionMotion | Mechanical & Industrial Engineering</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tech-font { font-family: 'Orbitron', sans-serif; }
+        .grid-pattern { background-image: linear-gradient(rgba(249, 115, 22, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22, 0.05) 1px, transparent 1px); background-size: 50px 50px; }
+        .gear-spin { animation: spin 20s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="fixed inset-0 grid-pattern pointer-events-none"></div>
+    
+    <nav class="fixed w-full z-50 border-b border-orange-500/20 bg-black/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 border-2 border-orange-500 rounded-sm flex items-center justify-center">
+                    <svg class="w-6 h-6 text-orange-500 gear-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <span class="text-2xl font-bold tracking-widest tech-font uppercase">Precision<span class="text-orange-500">Motion</span></span>
+            </div>
+            <div class="hidden lg:flex items-center gap-10 text-xs font-bold uppercase tracking-tighter">
+                <a href="#" class="text-orange-500">Industrial</a>
+                <a href="#" class="hover:text-orange-500 transition-colors">Robotics</a>
+                <a href="#" class="hover:text-orange-500 transition-colors">Prototypes</a>
+                <a href="#" class="border-2 border-orange-500 px-6 py-2 hover:bg-orange-500 transition-all group">
+                    Start Project <span class="inline-block transform translate-x-1 group-hover:translate-x-2 transition-transform">→</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-screen opacity-30 pointer-events-none overflow-hidden">
+             <div class="absolute inset-0 bg-gradient-to-l from-orange-500/20 to-transparent"></div>
+             <svg class="w-full h-full text-orange-500/10 animate-pulse" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 50 Q 25 0 50 50 T 100 50" fill="none" stroke="currentColor" stroke-width="0.1"></path>
+             </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-20 items-center">
+            <div>
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-[2px] w-12 bg-orange-500"></div>
+                    <span class="text-orange-500 tech-font uppercase tracking-widest text-sm">Automating Excellence</span>
+                </div>
+                <h1 class="text-6xl lg:text-8xl font-black leading-none mb-8 uppercase tech-font italic tracking-tighter">
+                    Next-Gen <span class="text-orange-500">Kinematics</span>
+                </h1>
+                <p class="text-slate-400 text-lg mb-12 max-w-md border-l-2 border-orange-500/50 pl-6">
+                    Advanced mechanical solutions for industrial automation, robotics, and complex thermodynamic systems. Precision engineered for performance.
+                </p>
+                <div class="flex gap-6">
+                    <div class="bg-orange-500 p-1">
+                        <button class="bg-black text-white px-10 py-5 tech-font font-bold uppercase hover:bg-orange-500 transition-colors">Explore R&D</button>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-10 border border-orange-500/10 animate-spin-slow"></div>
+                <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=800" alt="Mechanical Engine" class="rounded-sm grayscale border border-orange-500/20 group-hover:grayscale-0 transition-all duration-1000">
+                <div class="absolute -bottom-10 -right-10 bg-orange-500 p-8 tech-font text-black font-bold">
+                    EST. 1998
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-32 relative bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-4 gap-1">
+                <div class="bg-black p-10 border border-white/5 hover:bg-orange-500 transition-all group">
+                    <h4 class="tech-font text-4xl mb-6 text-orange-500 group-hover:text-black">01</h4>
+                    <h3 class="font-bold text-xl mb-4 group-hover:text-black">Industrial Design</h3>
+                    <p class="text-slate-500 group-hover:text-black/80">Conceptualizing heavy-duty machinery for manufacturing.</p>
+                </div>
+                <div class="bg-black p-10 border border-white/5 hover:bg-orange-500 transition-all group">
+                    <h4 class="tech-font text-4xl mb-6 text-orange-500 group-hover:text-black">02</h4>
+                    <h3 class="font-bold text-xl mb-4 group-hover:text-black">Thermodynamics</h3>
+                    <p class="text-slate-500 group-hover:text-black/80">Heat transfer and energy conversion system optimization.</p>
+                </div>
+                <div class="bg-black p-10 border border-white/5 hover:bg-orange-500 transition-all group">
+                    <h4 class="tech-font text-4xl mb-6 text-orange-500 group-hover:text-black">03</h4>
+                    <h3 class="font-bold text-xl mb-4 group-hover:text-black">Mechatronics</h3>
+                    <p class="text-slate-500 group-hover:text-black/80">Integrating electronic control into mechanical systems.</p>
+                </div>
+                <div class="bg-black p-10 border border-white/5 hover:bg-orange-500 transition-all group">
+                    <h4 class="tech-font text-4xl mb-6 text-orange-500 group-hover:text-black">04</h4>
+                    <h3 class="font-bold text-xl mb-4 group-hover:text-black">QA/QC Testing</h3>
+                    <p class="text-slate-500 group-hover:text-black/80">Rigorous stress and endurance testing for all parts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-orange-500/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 opacity-50">
+            <div class="text-xs tracking-[0.5em] uppercase">Built for Performance</div>
+            <div class="h-[1px] flex-1 bg-orange-500/20 hidden md:block mx-10"></div>
+            <div class="tech-font text-xs uppercase">PrecisionMotion &copy; 2026</div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Sparkles } from "lucide-react"
+import { Sparkles, EyeOff } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { saveAs } from "file-saver"
 import JSZip from "jszip"
 import { useToast } from "@/hooks/use-toast"
@@ -10,6 +11,7 @@ import { PromptPanel } from "@/components/builder/prompt-panel"
 import { PreviewPanel } from "@/components/builder/preview-panel"
 import { ComponentsSidebar } from "@/components/builder/components-sidebar"
 import { PropertiesPanel } from "@/components/builder/properties-panel"
+import { ProjectsDialog } from "@/components/builder/projects-dialog"
 import type { WebsiteElement, GenerationState } from "@/lib/types"
 
 const initialElements: WebsiteElement[] = [
@@ -58,7 +60,52 @@ export function WebsiteBuilder() {
   const [propertiesOpen, setPropertiesOpen] = useState(false)
   const [hasGenerated, setHasGenerated] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [viewport, setViewport] = useState<"desktop" | "tablet" | "mobile">("desktop")
+  const [isPreviewMode, setIsPreviewMode] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
+  const [projectsOpen, setProjectsOpen] = useState(false)
+  
+  const [history, setHistory] = useState<{
+    html: string | null;
+    schema: string | null;
+    api: string | null;
+    categoryId: string | null;
+  }[]>([])
+  const [historyIndex, setHistoryIndex] = useState(-1)
+  
   const { toast } = useToast()
+
+  const handleUndo = () => {
+    if (historyIndex > 0) {
+      const newIndex = historyIndex - 1
+      setHistoryIndex(newIndex)
+      const state = history[newIndex]
+      setGeneratedHtml(state.html)
+      setGeneratedSchema(state.schema)
+      setGeneratedApi(state.api)
+      setCurrentCategoryId(state.categoryId)
+    } else if (historyIndex === 0) {
+      setHistoryIndex(-1)
+      setGeneratedHtml(null)
+      setGeneratedSchema(null)
+      setGeneratedApi(null)
+      setCurrentCategoryId(null)
+      setHasGenerated(false)
+    }
+  }
+
+  const handleRedo = () => {
+    if (historyIndex < history.length - 1) {
+      const newIndex = historyIndex + 1
+      setHistoryIndex(newIndex)
+      const state = history[newIndex]
+      setGeneratedHtml(state.html)
+      setGeneratedSchema(state.schema)
+      setGeneratedApi(state.api)
+      setCurrentCategoryId(state.categoryId)
+      setHasGenerated(true)
+    }
+  }
 
   const handleGenerate = async () => {
     const trimmed = prompt.trim()
@@ -99,6 +146,18 @@ export function WebsiteBuilder() {
       if (data?.categoryId) {
         setCurrentCategoryId(data.categoryId)
       }
+
+      setHistory(prev => {
+        const newHistory = prev.slice(0, historyIndex + 1)
+        newHistory.push({
+          html,
+          schema: schema || "// No schema generated",
+          api: api || "// No API generated",
+          categoryId: data?.categoryId || currentCategoryId
+        })
+        return newHistory
+      })
+      setHistoryIndex(prev => prev + 1)
 
       setElements([])
       setGenerationState("complete")
@@ -199,6 +258,61 @@ export default {
     }
   }
 
+  const handleSave = async () => {
+    if (!generatedHtml) {
+      toast({ title: "Nothing to save", description: "Generate a website first." })
+      return
+    }
+
+    const projectName = window.prompt("Enter a name for your project:", prompt.slice(0, 30) || "My Project")
+    if (!projectName) return
+
+    setIsSaving(true)
+    try {
+      const res = await fetch("/api/projects", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: projectName,
+          prompt,
+          html: generatedHtml,
+          schema: generatedSchema,
+          api: generatedApi,
+          categoryId: currentCategoryId,
+        }),
+      })
+
+      if (!res.ok) throw new Error("Failed to save")
+      
+      toast({ title: "Project saved!", description: "Your website has been saved successfully." })
+    } catch (err: any) {
+      toast({ title: "Error", description: err.message, variant: "destructive" })
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const handleLoadProject = (project: any) => {
+    setPrompt(project.prompt || "")
+    setGeneratedHtml(project.html)
+    setGeneratedSchema(project.schema)
+    setGeneratedApi(project.api)
+    setCurrentCategoryId(project.categoryId)
+    setHasGenerated(true)
+    setProjectsOpen(false)
+    
+    // Clear history or set initial history to this project
+    setHistory([{
+      html: project.html,
+      schema: project.schema,
+      api: project.api,
+      categoryId: project.categoryId
+    }])
+    setHistoryIndex(0)
+    
+    toast({ title: "Project loaded", description: `Loaded "${project.name}" successfully.` })
+  }
+
   const handleElementSelect = (element: WebsiteElement) => {
     setSelectedElement(element)
     setPropertiesOpen(true)
@@ -250,7 +364,22 @@ export default {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
       <div className="z-10 bg-background/50 backdrop-blur-xl border-b border-border/50">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} hasGenerated={hasGenerated} onDownload={handleDownload} />
+        <Header 
+          sidebarOpen={sidebarOpen} 
+          setSidebarOpen={setSidebarOpen} 
+          hasGenerated={hasGenerated} 
+          onDownload={handleDownload} 
+          canUndo={historyIndex >= 0}
+          canRedo={historyIndex < history.length - 1}
+          onUndo={handleUndo}
+          onRedo={handleRedo}
+          viewport={viewport}
+          setViewport={setViewport}
+          onPreview={() => setIsPreviewMode(true)}
+          onSave={handleSave}
+          isSaving={isSaving}
+          onOpenProjects={() => setProjectsOpen(true)}
+        />
       </div>
 
       <div className="flex-1 flex overflow-hidden z-10 relative">
@@ -318,6 +447,7 @@ export default {
                   if (type === "api") setGeneratedApi(code)
                 }}
                 error={error}
+                viewport={viewport}
               />
             </div>
           )}
@@ -331,6 +461,31 @@ export default {
           onUpdate={handleElementUpdate}
         />
       </div>
+
+      {/* Full Screen Preview Mode */}
+      {isPreviewMode && (
+        <div className="fixed inset-0 z-[100] bg-background">
+          <div className="absolute top-4 right-4 z-[101]">
+            <Button variant="secondary" size="sm" onClick={() => setIsPreviewMode(false)} className="gap-2 shadow-lg">
+              <EyeOff className="w-4 h-4" />
+              <span>Exit Preview</span>
+            </Button>
+          </div>
+          <iframe
+            className="w-full h-full border-0"
+            title="Full Screen Preview"
+            srcDoc={generatedHtml || ""}
+            sandbox="allow-scripts allow-same-origin allow-forms"
+          />
+        </div>
+      )}
+
+      {/* Projects Dialog */}
+      <ProjectsDialog 
+        open={projectsOpen} 
+        onOpenChange={setProjectsOpen} 
+        onLoadProject={handleLoadProject} 
+      />
     </div>
   )
 }

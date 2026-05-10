@@ -15,7 +15,7 @@ if (!apiKey) {
 
 const groq = new Groq({ apiKey });
 const CATEGORIES_PATH = path.join(process.cwd(), 'lib', 'categories.json');
-const TEMPLATES_DIR = path.join(process.cwd(), 'templates');
+const TEMPLATES_DIR = path.join(process.cwd(), 'public', 'templates');
 
 const TEMPLATE_PROMPT = `You are a World-Class Award-Winning Web Designer. Create a STUNNING, unique, and highly impressive base template for the category: "{{NAME}}".
 DESCRIPTION: {{DESCRIPTION}}

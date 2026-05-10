@@ -25,6 +25,7 @@ interface PreviewPanelProps {
   generatedApi?: string | null
   onCodeUpdate?: (type: "html" | "schema" | "api", code: string) => void
   error?: string | null
+  viewport: "desktop" | "tablet" | "mobile"
 }
 
 export function PreviewPanel({
@@ -41,6 +42,7 @@ export function PreviewPanel({
   generatedApi,
   onCodeUpdate,
   error,
+  viewport,
 }: PreviewPanelProps) {
   const [hoveredElement, setHoveredElement] = useState<string | null>(null)
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
@@ -84,9 +86,16 @@ export function PreviewPanel({
       onDragOver={(e) => e.preventDefault()}
       onDrop={handleMainDrop}
     >
-      <div className="max-w-5xl mx-auto">
+      <div 
+        className={cn(
+          "mx-auto transition-all duration-500 ease-in-out",
+          viewport === "desktop" ? "max-w-5xl w-full" : 
+          viewport === "tablet" ? "max-w-[768px] w-full" : 
+          "max-w-[375px] w-full"
+        )}
+      >
         {/* Preview Frame */}
-        <div className="bg-card rounded-xl border border-border shadow-2xl overflow-hidden">
+        <div className="bg-card rounded-xl border border-border shadow-2xl overflow-hidden flex flex-col transition-all duration-500 ease-in-out">
           {/* Browser Chrome */}
           <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b border-border">
             <div className="flex gap-1.5 w-24">

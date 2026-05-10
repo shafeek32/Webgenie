@@ -166,7 +166,7 @@ export async function POST(req) {
         model: "llama-3.1-8b-instant",
         messages: augmentMsg,
         temperature: 0.1,
-        max_tokens: 4000,
+        max_tokens: 2500,
         response_format: { type: "json_object" },
       })
       raw = augmentationRes.choices?.[0]?.message?.content
@@ -177,7 +177,7 @@ export async function POST(req) {
           model: "llama-3.1-8b-instant",
           messages: augmentMsg,
           temperature: 0.1,
-          max_tokens: 4000,
+          max_tokens: 2500,
         })
         raw = fallbackRes.choices?.[0]?.message?.content
       } catch (fallbackErr) {

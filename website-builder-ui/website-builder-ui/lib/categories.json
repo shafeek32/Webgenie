@@ -508,5 +508,25 @@
         "id": "ecommerce-general",
         "name": "General Mega-Store E-commerce",
         "description": "Large scale e-commerce platform similar to Amazon or Flipkart with mega menus, deals of the day, and mixed product categories."
+    },
+    {
+        "id": "civil-engineering",
+        "name": "Civil Engineering Firm",
+        "description": "Professional site for civil engineering, construction, and infrastructure projects."
+    },
+    {
+        "id": "mechanical-engineering",
+        "name": "Mechanical Engineering",
+        "description": "Industrial and mechanical engineering company showcasing services and machinery."
+    },
+    {
+        "id": "teaching-academy",
+        "name": "Teaching Academy",
+        "description": "Platform for teaching centers, tutoring academies, and educational programs."
+    },
+    {
+        "id": "school-website",
+        "name": "School Website",
+        "description": "Official website for primary or secondary schools with news, events, and admissions."
     }
 ]

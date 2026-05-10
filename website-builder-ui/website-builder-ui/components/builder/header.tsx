@@ -13,6 +13,7 @@ import {
   Undo,
   Redo,
   Eye,
+  Save,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
@@ -23,10 +24,19 @@ interface HeaderProps {
   setSidebarOpen: (open: boolean) => void
   hasGenerated: boolean
   onDownload?: () => void
+  canUndo?: boolean
+  canRedo?: boolean
+  onUndo?: () => void
+  onRedo?: () => void
+  viewport: "desktop" | "tablet" | "mobile"
+  setViewport: (viewport: "desktop" | "tablet" | "mobile") => void
+  onPreview?: () => void
+  onSave?: () => void
+  isSaving?: boolean
+  onOpenProjects?: () => void
 }
 
-export function Header({ sidebarOpen, setSidebarOpen, hasGenerated, onDownload }: HeaderProps) {
-  const [viewport, setViewport] = useState<"desktop" | "tablet" | "mobile">("desktop")
+export function Header({ sidebarOpen, setSidebarOpen, hasGenerated, onDownload, canUndo, canRedo, onUndo, onRedo, viewport, setViewport, onPreview, onSave, isSaving, onOpenProjects }: HeaderProps) {
 
   return (
     <header className="h-14 border-b border-border flex items-center justify-between px-4 bg-card/50 backdrop-blur-sm">
@@ -35,7 +45,11 @@ export function Header({ sidebarOpen, setSidebarOpen, hasGenerated, onDownload }
           <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
             <Sparkles className="w-4 h-4 text-accent-foreground" />
           </div>
-          <span className="font-semibold text-foreground">BuildAI</span>
+          <span className="font-semibold text-foreground mr-4">BuildAI</span>
+          
+          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hidden sm:flex" onClick={onOpenProjects}>
+            My Projects
+          </Button>
         </div>
 
         {hasGenerated && (
@@ -51,10 +65,22 @@ export function Header({ sidebarOpen, setSidebarOpen, hasGenerated, onDownload }
             </Button>
 
             <div className="flex items-center gap-1">
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-muted-foreground hover:text-foreground disabled:opacity-50"
+                onClick={onUndo}
+                disabled={!canUndo}
+              >
                 <Undo className="w-4 h-4" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-muted-foreground hover:text-foreground disabled:opacity-50"
+                onClick={onRedo}
+                disabled={!canRedo}
+              >
                 <Redo className="w-4 h-4" />
               </Button>
             </div>
@@ -86,13 +112,17 @@ export function Header({ sidebarOpen, setSidebarOpen, hasGenerated, onDownload }
       <div className="flex items-center gap-2">
         {hasGenerated && (
           <>
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2">
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2" onClick={onPreview}>
               <Eye className="w-4 h-4" />
               <span className="hidden sm:inline">Preview</span>
             </Button>
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2" onClick={onDownload}>
               <Download className="w-4 h-4" />
               <span className="hidden sm:inline">Export</span>
+            </Button>
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2" onClick={onSave} disabled={isSaving}>
+              {isSaving ? <Sparkles className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+              <span className="hidden sm:inline">{isSaving ? "Saving..." : "Save"}</span>
             </Button>
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2">
               <Share2 className="w-4 h-4" />
